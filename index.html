@@ -251,14 +251,24 @@
       inset: 0;
       z-index: 0;
     }
+    /* Real photo layer */
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/img/hero.jpg');
+      background-size: cover;
+      background-position: center 42%;
+      opacity: .55;
+    }
     .hero-bg::before {
       content: '';
       position: absolute;
       inset: 0;
+      z-index: 2;
       background:
-        radial-gradient(ellipse 70% 55% at 75% 35%, rgba(39,96,184,.09) 0%, transparent 65%),
-        radial-gradient(ellipse 45% 40% at 20% 75%, rgba(201,165,90,.06) 0%, transparent 60%),
-        linear-gradient(155deg, var(--bg) 0%, #08101E 55%, var(--bg) 100%);
+        linear-gradient(95deg, rgba(6,7,15,.96) 0%, rgba(6,7,15,.86) 38%, rgba(6,7,15,.5) 70%, rgba(6,7,15,.7) 100%),
+        radial-gradient(ellipse 70% 55% at 78% 32%, rgba(39,96,184,.14) 0%, transparent 65%),
+        linear-gradient(to top, var(--bg) 2%, transparent 30%);
     }
     /* Grid lines */
     .hero-bg::after {
@@ -727,21 +737,38 @@
     }
     .proj-card:hover { background: var(--surface2); }
 
-    /* Individual art backgrounds */
-    .p1 .art { background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(201,165,90,.1) 0%, transparent 70%); }
-    .p2 .art { background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(39,96,184,.12) 0%, transparent 70%); }
-    .p3 .art { background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(80,140,80,.08) 0%, transparent 70%); }
-    .p4 .art { background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(180,130,90,.09) 0%, transparent 70%); }
-    .p5 .art { background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(39,96,184,.1) 0%, transparent 70%); }
-    .p6 .art { background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(201,165,90,.07) 0%, transparent 70%); }
-
+    /* Photo backgrounds per card */
     .art {
       position: absolute;
       inset: 0;
-      opacity: 0;
-      transition: opacity var(--t);
+      background-size: cover;
+      background-position: center;
+      opacity: .26;
+      filter: grayscale(.3);
+      transition: opacity var(--t) var(--ease), filter var(--t) var(--ease), transform .5s var(--ease);
     }
-    .proj-card:hover .art { opacity: 1; }
+    /* Dark gradient so text stays readable over photo */
+    .art::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--surface) 8%, rgba(12,20,34,.82) 45%, rgba(12,20,34,.55) 100%);
+      transition: background var(--t) var(--ease);
+    }
+    .proj-card:hover .art {
+      opacity: .5;
+      filter: grayscale(0);
+      transform: scale(1.04);
+    }
+    .proj-card:hover .art::after {
+      background: linear-gradient(to top, var(--surface2) 8%, rgba(17,29,48,.74) 50%, rgba(17,29,48,.4) 100%);
+    }
+    .p1 .art { background-image: url('assets/img/proj-hanstaiger.jpg'); }
+    .p2 .art { background-image: url('assets/img/proj-zen50.jpg'); }
+    .p3 .art { background-image: url('assets/img/proj-bonalba.jpg'); }
+    .p4 .art { background-image: url('assets/img/proj-interior.jpg'); }
+    .p5 .art { background-image: url('assets/img/proj-incom.jpg'); }
+    .p6 .art { background-image: url('assets/img/proj-triplew.jpg'); }
 
     /* Top gold bar */
     .proj-card::before {
@@ -757,6 +784,7 @@
     }
     .proj-card:hover::before { opacity: 1; }
 
+    .proj-card > div:not(.art) { position: relative; z-index: 2; }
     .proj-n {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
@@ -1126,7 +1154,7 @@
 
 <!-- ════════════════════ HERO ════════════════════ -->
 <section id="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg"><div class="hero-photo"></div></div>
   <div class="hero-wm" aria-hidden="true">NP</div>
   <div class="container">
     <div class="hero-content">
@@ -1219,12 +1247,7 @@
             ║       alt="Nerea Pérez">          ║
             ╚═══════════════════════════════════╝
           -->
-          <div class="photo-placeholder">
-            <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.18">
-              <path d="M18 130V30H38L82 100V30H102V130H82L38 60V130H18Z" fill="#C9A55A"/>
-              <path d="M108 30H140C152 30 162 40 162 52C162 64 152 74 140 74H122V130H108V30ZM122 60H140C143.3 60 146 57.3 146 54C146 50.7 143.3 48 140 48H122V60Z" fill="#C9A55A"/>
-            </svg>
-          </div>
+          <img src="assets/img/profile.jpg" alt="Nerea Pérez — Project Manager & Naval Engineer">
           <div class="photo-inner-border"></div>
         </div>
         <div class="photo-acc1"></div>
@@ -1862,6 +1885,15 @@ const revObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
 }, { threshold: .1, rootMargin: '0px 0px -55px 0px' });
 document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+/* Safety: reveal everything already in view right after load (covers no-IO / slow paint) */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.in)').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < innerHeight) el.classList.add('in');
+    });
+  }, 200);
+});
 
 /* ───────── COUNTERS ───────── */
 function runCounter(el) {

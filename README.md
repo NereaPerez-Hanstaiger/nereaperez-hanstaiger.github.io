@@ -1,55 +1,47 @@
-# Nerea Pérez — Personal CV Website
+# Nerea Pérez — Web personal / CV
+
+Tu web personal está **lista y completa**, con tus fotos reales ya incrustadas (foto de perfil, banner del catamarán Hanstaiger en el hero, y los 6 proyectos: Hanstaiger X1, ZEN 50, Bonalba, Interior Design, InCom y Triple W).
 
 ## 🚀 Publicar en GitHub Pages
 
-1. Crea un repositorio en GitHub llamado `nerea-perez-cv` (o el nombre que quieras)
-2. Sube todos los archivos de esta carpeta al repositorio
-3. Ve a **Settings → Pages → Source** y selecciona la rama `main` y carpeta `/ (root)`
-4. Tu web estará disponible en `https://tuusuario.github.io/nerea-perez-cv`
+1. Crea un repositorio en GitHub. Si lo llamas **`tuusuario.github.io`** (ej. `nereaperez.github.io`), la web quedará en `https://nereaperez.github.io`. Si le pones otro nombre (ej. `cv`), quedará en `https://tuusuario.github.io/cv`.
+2. Sube **todos** los archivos y carpetas de aquí (incluida la carpeta `assets/`).
+3. Ve a **Settings → Pages → Source**, elige la rama `main` y la carpeta `/ (root)`, y guarda.
+4. En 1-2 minutos tu web estará publicada. ¡Comparte el enlace en lugar de un PDF!
 
-> **Tip**: Si nombras el repositorio `tuusuario.github.io` (ej. `nereaperez.github.io`), la URL será directamente `https://nereaperez.github.io`
-
----
-
-## 📸 Añadir tu foto de perfil
-
-1. Guarda tu foto con el nombre **`profile.jpg`** en la carpeta `assets/img/`
-2. Abre `index.html` y busca el comentario:
-   ```html
-   <!-- AÑADE TU FOTO AQUÍ -->
-   ```
-3. Reemplaza esta línea:
-   ```html
-   <div class="photo-placeholder">NP</div>
-   ```
-   Por:
-   ```html
-   <img src="assets/img/profile.jpg" alt="Nerea Pérez">
-   ```
-
----
-
-## 🗂️ Estructura de archivos
+## 🗂️ Estructura
 
 ```
 nerea-cv/
-├── index.html          ← La web completa (CSS + JS incluidos)
-├── README.md           ← Este archivo
-└── assets/
-    └── img/            ← Coloca tus imágenes aquí
-        ├── profile.jpg          (tu foto de perfil)
-        └── ... (cualquier otra imagen opcional)
+├── index.html              ← La web completa (HTML + CSS + JS, todo en un archivo)
+├── README.md
+└── assets/img/             ← Tus imágenes ya procesadas e incrustadas
+    ├── profile.jpg         (tu foto de perfil)
+    ├── hero.jpg            (catamarán Hanstaiger — fondo del hero)
+    ├── proj-hanstaiger.jpg
+    ├── proj-zen50.jpg
+    ├── proj-bonalba.jpg
+    ├── proj-interior.jpg
+    ├── proj-incom.jpg
+    └── proj-triplew.jpg
 ```
 
----
+## ✨ Qué incluye
 
-## 🌐 Dominio personalizado (opcional)
+- Hero con el catamarán Hanstaiger de fondo y tu nombre en grande
+- Tus **3 métricas clave** animadas: +15 años · +15 proyectos internacionales · +50 profesionales liderados
+- Sección "Sobre mí" con tu foto enmarcada
+- Timeline completo de experiencia profesional
+- Galería de 6 proyectos con tus imágenes reales (efecto hover)
+- Skills con barras animadas + nube de herramientas técnicas
+- Educación y certificaciones (COIN, ISO 12215, PER, PADI…)
+- **Botón ES / EN** que traduce toda la web al inglés
+- 100% responsive (móvil, tablet, escritorio)
 
-Si tienes un dominio propio (ej. `nereaperez.com`):
-1. Crea un archivo `CNAME` en la raíz con solo el dominio: `nereaperez.com`
-2. En tu proveedor de DNS, apunta el dominio a `185.199.108.153`
-3. En GitHub Pages → Settings, añade el dominio personalizado
+## 🔄 Cambiar una foto en el futuro
 
----
+Sustituye el archivo correspondiente dentro de `assets/img/` manteniendo el mismo nombre. Lo ideal: foto de perfil en vertical (3:4) y proyectos en horizontal (4:3).
 
-*Diseño personalizado · No uses plantillas — este es tuyo.*
+## 🌐 Dominio propio (opcional)
+
+Si tienes un dominio (ej. `nereaperez.com`): crea un archivo `CNAME` en la raíz con el dominio dentro, apunta el DNS a las IPs de GitHub Pages y configúralo en Settings → Pages.
