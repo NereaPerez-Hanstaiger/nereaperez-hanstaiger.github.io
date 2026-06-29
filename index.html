@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nerea Pérez — Project Manager · Naval Engineer · Process Consultant. 15+ years delivering complex engineering projects.">
+  <meta property="og:title" content="Nerea Pérez · Project Manager & Naval Engineer">
+  <meta property="og:description" content="15+ años. 15+ proyectos internacionales. Equipos de hasta 50 personas. Engineering mindset. Real results.">
+  <title>Nerea Pérez · Project Manager & Naval Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─────────────────────────────────────────
+       TOKENS
+    ───────────────────────────────────────── */
+    :root {
+      --bg:        #06070F;
+      --surface:   #0C1422;
+      --surface2:  #111D30;
+      --surface3:  #172440;
+      --gold:      #C9A55A;
+      --gold-dim:  rgba(201,165,90,.12);
+      --gold-mid:  rgba(201,165,90,.30);
+      --blue:      #2760B8;
+      --blue-light:#4B9EE5;
+      --text:      #EDE9E3;
+      --muted:     #6B7B8F;
+      --border:    rgba(201,165,90,.10);
+      --border-h:  rgba(201,165,90,.35);
+      --r:         12px;
+      --rL:        20px;
+      --ease:      cubic-bezier(.4,0,.2,1);
+      --t:         .3s;
+    }
+
+    /* ─────────────────────────────────────────
+       RESET
+    ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─────────────────────────────────────────
+       UTILITIES
+    ───────────────────────────────────────── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+    .section   { padding: 120px 0; }
+
+    .tag {
+      display: inline-flex;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .tag::after {
+      content: '';
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+      opacity: .5;
+    }
+
+    .title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.08;
+      margin-bottom: 28px;
+    }
+    .gold { color: var(--gold); }
+    .muted { color: var(--muted); }
+
+    /* ─────────────────────────────────────────
+       REVEAL ANIMATIONS
+    ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .75s var(--ease), transform .75s var(--ease);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+    .d4 { transition-delay: .4s; }
+    .d5 { transition-delay: .5s; }
+
+    /* ─────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 200;
+      padding: 0;
+      transition: background var(--t) var(--ease),
+                  border-color var(--t) var(--ease),
+                  backdrop-filter var(--t) var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+    #nav.scrolled {
+      background: rgba(6,7,15,.82);
+      backdrop-filter: blur(24px) saturate(1.4);
+      border-color: var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    /* Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .12em;
+      color: var(--muted);
+      transition: color var(--t);
+    }
+    .logo:hover { color: var(--gold); }
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+    }
+
+    /* Links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: .03em;
+      transition: color var(--t);
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* Lang toggle */
+    .lang-pill {
+      display: flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 3px;
+      gap: 2px;
+    }
+    .lbtn {
+      background: none;
+      border: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      color: var(--muted);
+      padding: 5px 13px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all var(--t) var(--ease);
+    }
+    .lbtn.active {
+      background: var(--gold);
+      color: #000;
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+
+    /* Hamburger */
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    /* Mobile drawer */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: rgba(6,7,15,.97);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+      z-index: 190;
+      padding: 24px 28px;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-drawer.open { display: flex; }
+    .mobile-drawer a {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color var(--t);
+    }
+    .mobile-drawer a:hover { color: var(--gold); }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 80px;
+    }
+
+    /* Layered background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 75% 35%, rgba(39,96,184,.09) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 40% at 20% 75%, rgba(201,165,90,.06) 0%, transparent 60%),
+        linear-gradient(155deg, var(--bg) 0%, #08101E 55%, var(--bg) 100%);
+    }
+    /* Grid lines */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,165,90,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,165,90,.035) 1px, transparent 1px);
+      background-size: 90px 90px;
+    }
+
+    /* Big NP watermark */
+    .hero-wm {
+      position: absolute;
+      right: -60px;
+      top: 50%;
+      transform: translateY(-52%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(220px, 28vw, 440px);
+      font-weight: 700;
+      line-height: .9;
+      color: rgba(201,165,90,.035);
+      user-select: none;
+      pointer-events: none;
+      z-index: 0;
+      letter-spacing: -.04em;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 660px; }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 30px;
+    }
+    .hero-eyebrow-line {
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+      opacity: .7;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 700;
+      line-height: .92;
+      letter-spacing: -.025em;
+      margin-bottom: 30px;
+    }
+    .hero-name .first  { display: block; color: var(--text); }
+    .hero-name .last   { display: block; color: var(--gold); }
+
+    .hero-sub {
+      font-size: clamp(.95rem, 1.8vw, 1.15rem);
+      color: var(--muted);
+      line-height: 1.78;
+      margin-bottom: 44px;
+      max-width: 520px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 52px;
+    }
+    .pill {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      padding: 7px 16px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      color: var(--muted);
+      transition: all var(--t) var(--ease);
+    }
+    .pill:hover { border-color: var(--border-h); color: var(--gold); }
+
+    .cta-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      background: var(--gold);
+      color: #0A0A10;
+      border-radius: 50px;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      border: 2px solid var(--gold);
+      transition: all var(--t) var(--ease);
+    }
+    .btn-gold:hover { background: transparent; color: var(--gold); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      background: transparent;
+      color: var(--text);
+      border-radius: 50px;
+      font-size: 13.5px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      transition: all var(--t) var(--ease);
+    }
+    .btn-ghost:hover { border-color: var(--border-h); color: var(--gold); }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+      z-index: 1;
+      animation: bob 2.2s ease-in-out infinite;
+    }
+    .scroll-cue-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .scroll-cue-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: .7;
+    }
+    @keyframes bob {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(-7px); }
+    }
+
+    /* ─────────────────────────────────────────
+       METRICS STRIP
+    ───────────────────────────────────────── */
+    #metrics {
+      background: var(--surface);
+      border-top:    1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+    .metric {
+      background: var(--surface);
+      padding: 60px 44px;
+      text-align: center;
+      position: relative;
+      transition: background var(--t) var(--ease);
+      overflow: hidden;
+    }
+    .metric::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--gold-dim) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity var(--t);
+    }
+    .metric:hover::before { opacity: 1; }
+    .metric:hover { background: var(--surface2); }
+
+    .metric-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.8rem, 6vw, 6.5rem);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 2px;
+    }
+    .metric-plus {
+      font-size: .45em;
+      color: var(--gold);
+      opacity: .75;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+    }
+    .metric-label {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin-top: 14px;
+      margin-bottom: 5px;
+    }
+    .metric-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .08em;
+    }
+
+    /* ─────────────────────────────────────────
+       ABOUT
+    ───────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 88px;
+      align-items: center;
+    }
+
+    /* Photo frame */
+    .photo-frame {
+      position: relative;
+    }
+    .photo-inner {
+      border-radius: var(--rL);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--surface2);
+      position: relative;
+    }
+    .photo-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    /* Gradient overlay on photo */
+    .photo-inner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(6,7,15,.5) 100%);
+    }
+    /* No-photo placeholder */
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(155deg, var(--surface) 0%, var(--surface3) 100%);
+      font-family: 'Playfair Display', serif;
+      font-size: 100px;
+      color: rgba(201,165,90,.12);
+      font-weight: 700;
+      letter-spacing: -.04em;
+    }
+    /* Gold corner accents */
+    .photo-acc1 {
+      position: absolute;
+      bottom: -18px;
+      right: -18px;
+      width: 110px;
+      height: 110px;
+      border: 1.5px solid var(--gold);
+      border-radius: 14px;
+      opacity: .25;
+      pointer-events: none;
+    }
+    .photo-acc2 {
+      position: absolute;
+      top: -11px;
+      left: -11px;
+      width: 56px;
+      height: 56px;
+      border: 1.5px solid var(--gold);
+      border-radius: 9px;
+      opacity: .18;
+      pointer-events: none;
+    }
+    /* Badge */
+    .photo-badge {
+      position: absolute;
+      bottom: 22px;
+      right: -18px;
+      background: var(--gold);
+      color: #0A0A10;
+      padding: 12px 16px;
+      border-radius: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 600;
+      line-height: 1.4;
+      text-align: center;
+      z-index: 2;
+      box-shadow: 0 8px 32px rgba(201,165,90,.3);
+    }
+    /* Gold bar top of photo */
+    .photo-inner-border {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--rL);
+      border: 1px solid rgba(201,165,90,.2);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .about-bio {
+      font-size: 1.04rem;
+      color: var(--muted);
+      line-height: 1.82;
+      margin-bottom: 22px;
+    }
+    .about-bio strong { color: var(--text); font-weight: 500; }
+
+    .hl-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+      margin-top: 30px;
+    }
+    .hl-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 15px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      transition: border-color var(--t);
+    }
+    .hl-card:hover { border-color: var(--border-h); }
+    .hl-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--gold-dim);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .hl-txt strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .hl-txt span {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* ─────────────────────────────────────────
+       EXPERIENCE TIMELINE
+    ───────────────────────────────────────── */
+    #experience { background: var(--bg); }
+
+    .tl-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    .tl {
+      position: relative;
+      padding-left: 38px;
+    }
+    .tl::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold) 0%, transparent 90%);
+    }
+    .tl-item { position: relative; padding-bottom: 44px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute;
+      left: -43px;
+      top: 7px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px rgba(201,165,90,.18);
+    }
+    .tl-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: .1em;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .tl-co {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .tl-role {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 13px;
+    }
+    .tl-loc {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      opacity: .65;
+      margin-left: 6px;
+    }
+    .tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .tl-bullets li {
+      font-size: 13.5px;
+      color: var(--muted);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .tl-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      opacity: .45;
+    }
+    .tl-bullets li strong { color: var(--text); font-weight: 600; }
+
+    /* ─────────────────────────────────────────
+       PROJECTS
+    ───────────────────────────────────────── */
+    #projects { background: var(--surface); }
+
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--rL);
+      overflow: hidden;
+    }
+
+    .proj-card {
+      position: relative;
+      background: var(--surface);
+      padding: 36px 30px 30px;
+      min-height: 310px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      transition: background var(--t) var(--ease);
+      cursor: default;
+    }
+    .proj-card:hover { background: var(--surface2); }
+
+    /* Individual art backgrounds */
+    .p1 .art { background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(201,165,90,.1) 0%, transparent 70%); }
+    .p2 .art { background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(39,96,184,.12) 0%, transparent 70%); }
+    .p3 .art { background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(80,140,80,.08) 0%, transparent 70%); }
+    .p4 .art { background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(180,130,90,.09) 0%, transparent 70%); }
+    .p5 .art { background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(39,96,184,.1) 0%, transparent 70%); }
+    .p6 .art { background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(201,165,90,.07) 0%, transparent 70%); }
+
+    .art {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity var(--t);
+    }
+    .proj-card:hover .art { opacity: 1; }
+
+    /* Top gold bar */
+    .proj-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity var(--t);
+    }
+    .proj-card:hover::before { opacity: 1; }
+
+    .proj-n {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--gold);
+      opacity: .5;
+      letter-spacing: .15em;
+      margin-bottom: 18px;
+    }
+    .proj-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 7px;
+      line-height: 1.2;
+    }
+    .proj-role {
+      font-size: 11.5px;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+    .proj-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 22px;
+    }
+    .proj-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: .06em;
+      padding: 4px 10px;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,165,90,.18);
+      border-radius: 20px;
+      color: var(--gold);
+    }
+
+    /* Arrow */
+    .proj-arrow {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 20px;
+      height: 20px;
+      color: var(--gold);
+      opacity: 0;
+      transform: translate(-4px, 4px);
+      transition: all var(--t) var(--ease);
+    }
+    .proj-card:hover .proj-arrow {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─────────────────────────────────────────
+       SKILLS
+    ───────────────────────────────────────── */
+    #skills { background: var(--bg); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 28px;
+    }
+    .sk-box {
+      padding: 30px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      transition: border-color var(--t);
+    }
+    .sk-box:hover { border-color: var(--border-h); }
+    .sk-cat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 18px;
+    }
+    .sk-rows { display: flex; flex-direction: column; gap: 14px; }
+    .sk-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 14px;
+    }
+    .sk-name {
+      font-size: 13.5px;
+      color: var(--text);
+    }
+    .sk-bar-wrap {
+      width: 100px;
+      height: 2px;
+      background: rgba(255,255,255,.06);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .sk-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--blue-light));
+      border-radius: 2px;
+      width: 0;
+      transition: width 1.3s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* Tools */
+    .tool-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 8px;
+    }
+    .tool {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      padding: 6px 13px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      color: var(--muted);
+      transition: all var(--t);
+    }
+    .tool:hover { border-color: var(--border-h); color: var(--gold); }
+
+    /* ─────────────────────────────────────────
+       CERTIFICATIONS & EDUCATION
+    ───────────────────────────────────────── */
+    #certs { background: var(--surface); }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+      margin-bottom: 52px;
+    }
+    .edu-card {
+      padding: 26px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      transition: border-color var(--t);
+      position: relative;
+      overflow: hidden;
+    }
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .edu-card:hover { border-color: var(--border-h); }
+    .edu-yr {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: var(--gold);
+      letter-spacing: .1em;
+      margin-bottom: 9px;
+    }
+    .edu-deg { font-size: 14.5px; font-weight: 600; color: var(--text); line-height: 1.35; margin-bottom: 6px; }
+    .edu-sch { font-size: 12.5px; color: var(--muted); }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+    }
+    .cert-card {
+      padding: 22px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      transition: all var(--t) var(--ease);
+    }
+    .cert-card:hover {
+      border-color: var(--border-h);
+      transform: translateY(-2px);
+    }
+    .cert-icon { font-size: 22px; margin-bottom: 10px; }
+    .cert-name { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .cert-body { font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+    /* ─────────────────────────────────────────
+       CONTACT
+    ───────────────────────────────────────── */
+    #contact {
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    #contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,165,90,.06) 0%, transparent 70%),
+        linear-gradient(to bottom, transparent, rgba(201,165,90,.03));
+    }
+    .contact-wrap {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-wrap p {
+      font-size: 1.04rem;
+      color: var(--muted);
+      line-height: 1.78;
+      margin-bottom: 42px;
+    }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .c-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 24px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: all var(--t) var(--ease);
+    }
+    .c-link:hover { border-color: var(--gold); color: var(--gold); }
+    .c-link.primary {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #0A0A10;
+      font-weight: 700;
+    }
+    .c-link.primary:hover {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    footer {
+      padding: 36px 0;
+      border-top: 1px solid var(--border);
+    }
+    .foot-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .foot-copy {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .05em;
+    }
+    .foot-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: var(--muted);
+      opacity: .6;
+      letter-spacing: .08em;
+    }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media (max-width: 980px) {
+      .nav-links  { display: none; }
+      .burger     { display: flex; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 52px; }
+      .about-grid .photo-frame { max-width: 300px; margin: 0 auto; }
+      .photo-badge { right: 0; }
+
+      .metrics-grid { grid-template-columns: 1fr; }
+      .metric { padding: 44px 28px; }
+
+      .tl-cols { grid-template-columns: 1fr; gap: 0; }
+
+      .proj-grid { grid-template-columns: 1fr 1fr; }
+
+      .skills-grid { grid-template-columns: 1fr; }
+
+      .cert-grid { grid-template-columns: repeat(2,1fr); }
+      .edu-grid  { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .section { padding: 80px 0; }
+      .proj-grid { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: 1fr; }
+      .hl-grid { grid-template-columns: 1fr; }
+      .hero-name { font-size: clamp(3.2rem, 14vw, 5.5rem); }
+      .foot-inner { justify-content: center; text-align: center; }
+      .sk-bar-wrap { width: 70px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ════════════════════ NAV ════════════════════ -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+
+      <!-- Logo -->
+      <a href="#" class="logo" aria-label="Nerea Pérez">
+        <svg class="logo-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 33V5H8.5L20.5 25V5H26V33H20.5L8.5 13V33H3Z" fill="#C9A55A"/>
+          <path d="M28 5H35.5C38.5 5 41 7.5 41 10.5C41 13.5 38.5 16 35.5 16H32V33H28V5ZM32 12.5H35.5C36.6 12.5 37.5 11.6 37.5 10.5C37.5 9.4 36.6 8.5 35.5 8.5H32V12.5Z" fill="rgba(201,165,90,0.45)"/>
+        </svg>
+        <span>Naval Engineer · PM</span>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="nav-links">
+        <li><a href="#about"      data-i18n="nav-about">Sobre mí</a></li>
+        <li><a href="#experience" data-i18n="nav-exp">Experiencia</a></li>
+        <li><a href="#projects"   data-i18n="nav-proj">Proyectos</a></li>
+        <li><a href="#skills"     data-i18n="nav-skills">Skills</a></li>
+        <li><a href="#contact"    data-i18n="nav-contact">Contacto</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <!-- Language toggle -->
+        <div class="lang-pill" role="group" aria-label="Language selector">
+          <button class="lbtn active" onclick="setLang('es')">ES</button>
+          <button class="lbtn"        onclick="setLang('en')">EN</button>
+        </div>
+        <!-- Hamburger -->
+        <button class="burger" onclick="toggleBurger()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="drawer">
+  <a href="#about"      onclick="closeBurger()" data-i18n="nav-about">Sobre mí</a>
+  <a href="#experience" onclick="closeBurger()" data-i18n="nav-exp">Experiencia</a>
+  <a href="#projects"   onclick="closeBurger()" data-i18n="nav-proj">Proyectos</a>
+  <a href="#skills"     onclick="closeBurger()" data-i18n="nav-skills">Skills</a>
+  <a href="#contact"    onclick="closeBurger()" data-i18n="nav-contact">Contacto</a>
+</div>
+
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-wm" aria-hidden="true">NP</div>
+  <div class="container">
+    <div class="hero-content">
+
+      <div class="hero-eyebrow reveal">
+        <div class="hero-eyebrow-line"></div>
+        <span data-i18n="hero-tag">Naval Engineer · Project Manager · Alicante, Spain</span>
+      </div>
+
+      <h1 class="hero-name reveal d1">
+        <span class="first">Nerea</span>
+        <span class="last">Pérez</span>
+      </h1>
+
+      <p class="hero-sub reveal d2" data-i18n="hero-sub">
+        Project Manager con más de 15 años convirtiendo proyectos de ingeniería complejos en resultados medibles.
+        Engineering mindset aplicado a la gestión estratégica, la calidad y la operativa real.
+      </p>
+
+      <div class="pill-row reveal d3">
+        <span class="pill" data-i18n="p1">Project Manager</span>
+        <span class="pill" data-i18n="p2">Naval Engineer</span>
+        <span class="pill" data-i18n="p3">Technical Writer</span>
+        <span class="pill" data-i18n="p4">Process Consultant</span>
+        <span class="pill" data-i18n="p5">ISO 9001 · 14000</span>
+      </div>
+
+      <div class="cta-row reveal d4">
+        <a href="#contact" class="btn-gold" data-i18n="cta1">Trabajemos juntos →</a>
+        <a href="#experience" class="btn-ghost" data-i18n="cta2">Ver trayectoria</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <div class="scroll-cue-line"></div>
+    <div class="scroll-cue-label" data-i18n="scroll">Scroll</div>
+  </div>
+</section>
+
+
+<!-- ════════════════════ METRICS ════════════════════ -->
+<section id="metrics">
+  <div class="metrics-grid">
+
+    <div class="metric reveal">
+      <div class="metric-num">
+        <span class="counter" data-target="15">0</span>
+        <span class="metric-plus">+</span>
+      </div>
+      <div class="metric-label" data-i18n="m1-lbl">Años de experiencia</div>
+      <div class="metric-sub" data-i18n="m1-sub">Engineering · PM · Operations</div>
+    </div>
+
+    <div class="metric reveal d2">
+      <div class="metric-num">
+        <span class="counter" data-target="15">0</span>
+        <span class="metric-plus">+</span>
+      </div>
+      <div class="metric-label" data-i18n="m2-lbl">Proyectos internacionales</div>
+      <div class="metric-sub" data-i18n="m2-sub">Simultáneos · End-to-end</div>
+    </div>
+
+    <div class="metric reveal d3">
+      <div class="metric-num">
+        <span class="counter" data-target="50">0</span>
+        <span class="metric-plus">+</span>
+      </div>
+      <div class="metric-label" data-i18n="m3-lbl">Profesionales liderados</div>
+      <div class="metric-sub" data-i18n="m3-sub">Equipos multidisciplinares</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════ ABOUT ════════════════════ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- Photo -->
+      <div class="photo-frame reveal">
+        <div class="photo-inner">
+          <!--
+            ╔═══════════════════════════════════╗
+            ║  AÑADE TU FOTO AQUÍ               ║
+            ║  Reemplaza la línea de abajo con: ║
+            ║  <img src="assets/img/profile.jpg"║
+            ║       alt="Nerea Pérez">          ║
+            ╚═══════════════════════════════════╝
+          -->
+          <div class="photo-placeholder">
+            <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.18">
+              <path d="M18 130V30H38L82 100V30H102V130H82L38 60V130H18Z" fill="#C9A55A"/>
+              <path d="M108 30H140C152 30 162 40 162 52C162 64 152 74 140 74H122V130H108V30ZM122 60H140C143.3 60 146 57.3 146 54C146 50.7 143.3 48 140 48H122V60Z" fill="#C9A55A"/>
+            </svg>
+          </div>
+          <div class="photo-inner-border"></div>
+        </div>
+        <div class="photo-acc1"></div>
+        <div class="photo-acc2"></div>
+        <div class="photo-badge">
+          ⚓<br>Naval Engineer<br>& Project Manager
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div>
+        <div class="tag reveal" data-i18n="about-tag">Sobre mí</div>
+        <h2 class="title reveal d1" data-i18n="about-title">Engineering Mindset.<br><span class="gold">Project Execution.</span></h2>
+        <p class="about-bio reveal d2" data-i18n="about-bio1">
+          Ingeniera Naval con <strong>más de 15 años</strong> en la intersección entre ingeniería técnica y gestión de proyectos.
+          Fundé y escalé <strong>Hanstaiger S.L.</strong> desde cero — una planta de manufactura avanzada en materiales compuestos —
+          liderando la cartera completa de proyectos internacionales con equipos de hasta 50 profesionales.
+        </p>
+        <p class="about-bio reveal d3" data-i18n="about-bio2">
+          Hoy trabajo como <strong>Consultora Independiente</strong> en optimización de procesos, technical writing y calidad.
+          Miembro del Comité Técnico <strong>ISO/WD 12215 WG18</strong> para embarcaciones multicasco.
+          Colegiada COIN Nº 3088.
+        </p>
+        <div class="hl-grid reveal d4">
+          <div class="hl-card">
+            <div class="hl-icon">📐</div>
+            <div class="hl-txt">
+              <strong data-i18n="hl1-t">Technical Writing</strong>
+              <span data-i18n="hl1-d">SOPs, manuales técnicos y gobernanza documental</span>
+            </div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon">🏗️</div>
+            <div class="hl-txt">
+              <strong data-i18n="hl2-t">Full Lifecycle PM</strong>
+              <span data-i18n="hl2-d">Del concepto a la entrega llave en mano</span>
+            </div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon">✅</div>
+            <div class="hl-txt">
+              <strong data-i18n="hl3-t">ISO Quality Expert</strong>
+              <span data-i18n="hl3-d">ISO 9001, ISO 14000, ISO 12215</span>
+            </div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon">🌍</div>
+            <div class="hl-txt">
+              <strong data-i18n="hl4-t">Proyectos Internacionales</strong>
+              <span data-i18n="hl4-d">Equipos multiculturales · documentación bilingüe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════ EXPERIENCE ════════════════════ -->
+<section class="section" id="experience">
+  <div class="container">
+    <div class="tag reveal" data-i18n="exp-tag">Experiencia profesional</div>
+    <h2 class="title reveal d1" data-i18n="exp-title">Trayectoria<br><span class="gold">Profesional</span></h2>
+
+    <div class="tl-cols">
+      <!-- Col A -->
+      <div class="tl reveal d1">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">Oct 2023 — <span data-i18n="present">Presente</span></div>
+          <div class="tl-co" data-i18n="e1-co">Consultora Independiente de Procesos</div>
+          <div class="tl-role">Freelance · Process Consultant <span class="tl-loc">Alicante, Spain</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="e1-b1"><strong>Optimización de procesos</strong> para empresas industriales y tecnológicas</li>
+            <li data-i18n="e1-b2"><strong>Technical Writing</strong> — SOPs complejos, manuales y arquitectura de información</li>
+            <li data-i18n="e1-b3">Asesoría ISO 9001 y gestión de proyectos técnicos end-to-end</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">Jun 2025 — Abr 2026</div>
+          <div class="tl-co">InCom Group</div>
+          <div class="tl-role">Project Manager · Consultora de Procesos <span class="tl-loc">Alicante, Spain</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="e2-b1"><strong>Ciclo de vida completo</strong> de proyectos en sostenibilidad y materiales avanzados</li>
+            <li data-i18n="e2-b2">Coordinación técnica entre ingeniería, producción y colaboradores externos</li>
+            <li data-i18n="e2-b3">Implantación de <strong>mejora continua</strong> y documentación técnica</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">Dic 2017 — Sep 2023</div>
+          <div class="tl-co">Hanstaiger S.L.</div>
+          <div class="tl-role">Fundadora & Directora de Proyectos <span class="tl-loc">Alicante, Spain</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="e3-b1">Fundación y escalado desde cero de <strong>planta de manufactura en materiales compuestos</strong></li>
+            <li data-i18n="e3-b2">Dirección de <strong>+15 proyectos internacionales</strong> simultáneos · diseño → llave en mano</li>
+            <li data-i18n="e3-b3">Arquitectura documental completa: specs técnicas, SOPs, manuales de mantenimiento</li>
+            <li data-i18n="e3-b4">Liderazgo de equipos multidisciplinares de <strong>hasta 50 profesionales</strong></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Col B -->
+      <div class="tl reveal d2">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">Dic 2013 — Dic 2017</div>
+          <div class="tl-co">Triple W Yacht</div>
+          <div class="tl-role">Directora de Proyectos / Fundadora <span class="tl-loc">Valencia, Spain</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="e4-b1">Oficina técnica para <strong>proyectos náuticos internacionales</strong> llave en mano</li>
+            <li data-i18n="e4-b2">Documentación de ingeniería completa: viabilidad, cálculos estructurales</li>
+            <li data-i18n="e4-b3">Gestión del cambio con <strong>stakeholders multiculturales</strong> y documentación bilingüe</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">Nov 2011 — Nov 2013</div>
+          <div class="tl-co">Varadero Port Denia</div>
+          <div class="tl-role">Project Manager & Ingeniera Naval <span class="tl-loc">Denia, Spain</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="e5-b1">Coordinación de producción y planificación técnica de <strong>proyectos industriales a gran escala</strong></li>
+            <li data-i18n="e5-b2">Supervisión de estándares de calidad, PRL y gestión de subcontratas</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">Sep 2008 — Sep 2009</div>
+          <div class="tl-co">Ghenova Ingeniería (Navantia)</div>
+          <div class="tl-role">Ingeniera Naval <span class="tl-loc">Ferrol, Spain</span></div>
+          <ul class="tl-bullets">
+            <li data-i18n="e6-b1">Modelos 3D avanzados y planos de <strong>ingeniería de detalle</strong> para industria pesada</li>
+            <li data-i18n="e6-b2">Gestión de configuración y análisis de mantenimiento técnico (AMT) — <strong>Navantia</strong></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════ PROJECTS ════════════════════ -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="tag reveal" data-i18n="proj-tag">Proyectos destacados</div>
+    <h2 class="title reveal d1" data-i18n="proj-title">Del concepto al<br><span class="gold">Masterpiece</span></h2>
+
+    <div class="proj-grid reveal d2">
+
+      <div class="proj-card p1">
+        <div class="art"></div>
+        <svg class="proj-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        <div>
+          <div class="proj-n">01 · Hanstaiger</div>
+          <div class="proj-name">Hanstaiger X1</div>
+          <div class="proj-role" data-i18n="pr1-role">Fundadora & Project Director</div>
+          <p class="proj-desc" data-i18n="pr1-desc">Multihull de alto rendimiento en materiales compuestos avanzados. Proyecto internacional desde el concepto y estudio de viabilidad hasta la entrega llave en mano.</p>
+        </div>
+        <div class="proj-tags">
+          <span class="proj-tag">Composite Materials</span>
+          <span class="proj-tag">Naval Eng.</span>
+          <span class="proj-tag">Full Lifecycle PM</span>
+        </div>
+      </div>
+
+      <div class="proj-card p2">
+        <div class="art"></div>
+        <svg class="proj-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        <div>
+          <div class="proj-n">02 · ZenYachts</div>
+          <div class="proj-name">ZEN 50</div>
+          <div class="proj-role" data-i18n="pr2-role">Naval Engineering & Interior Consulting</div>
+          <p class="proj-desc" data-i18n="pr2-desc">Cero emisiones, máximo rendimiento. Consultoría naval y coordinación de interiores de alta gama para catamarán de 50 pies con propulsión eléctrica.</p>
+        </div>
+        <div class="proj-tags">
+          <span class="proj-tag">Zero Emissions</span>
+          <span class="proj-tag">Interior Design</span>
+          <span class="proj-tag">Yacht Consulting</span>
+        </div>
+      </div>
+
+      <div class="proj-card p3">
+        <div class="art"></div>
+        <svg class="proj-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        <div>
+          <div class="proj-n">03 · Residencial</div>
+          <div class="proj-name">Bonalba Casa Piscina</div>
+          <div class="proj-role" data-i18n="pr3-role">PM · Design Coordination · 2024</div>
+          <p class="proj-desc" data-i18n="pr3-desc">Dirección y coordinación técnica de proyecto residencial de alta gama. Gestión integral: planificación, selección de materiales y documentación técnica completa.</p>
+        </div>
+        <div class="proj-tags">
+          <span class="proj-tag">Residential PM</span>
+          <span class="proj-tag">AutoCAD</span>
+          <span class="proj-tag">2024</span>
+        </div>
+      </div>
+
+      <div class="proj-card p4">
+        <div class="art"></div>
+        <svg class="proj-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        <div>
+          <div class="proj-n">04 · ZenYachts</div>
+          <div class="proj-name">Interior Design<br>Coordination</div>
+          <div class="proj-role" data-i18n="pr4-role">Yacht Consulting & Material Selection</div>
+          <p class="proj-desc" data-i18n="pr4-desc">Selección y coordinación de materiales premium (Spradling, Fenix, Little Greene) para interiores náuticos de lujo. Moodboards técnicos y especificaciones de acabados.</p>
+        </div>
+        <div class="proj-tags">
+          <span class="proj-tag">Luxury Interiors</span>
+          <span class="proj-tag">Spradling</span>
+          <span class="proj-tag">Material Spec.</span>
+        </div>
+      </div>
+
+      <div class="proj-card p5">
+        <div class="art"></div>
+        <svg class="proj-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        <div>
+          <div class="proj-n">05 · InCom Group</div>
+          <div class="proj-name">Sostenibilidad &<br>Materiales Avanzados</div>
+          <div class="proj-role" data-i18n="pr5-role">Project Manager · Process Consultant</div>
+          <p class="proj-desc" data-i18n="pr5-desc">Gestión de proyectos estratégicos en sostenibilidad y materiales avanzados. Control de calidad, stakeholders y documentación técnica en sector industrial multisectorial.</p>
+        </div>
+        <div class="proj-tags">
+          <span class="proj-tag">Sustainability</span>
+          <span class="proj-tag">ISO 9001</span>
+          <span class="proj-tag">Process Opt.</span>
+        </div>
+      </div>
+
+      <div class="proj-card p6">
+        <div class="art"></div>
+        <svg class="proj-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        <div>
+          <div class="proj-n">06 · Triple W Yacht</div>
+          <div class="proj-name">International<br>Turnkey Projects</div>
+          <div class="proj-role" data-i18n="pr6-role">Technical Director & Founder</div>
+          <p class="proj-desc" data-i18n="pr6-desc">Dirección técnica de oficina de ingeniería especializada en proyectos náuticos internacionales. Presupuestos, cronogramas de contratistas y ciclo de vida técnico completo.</p>
+        </div>
+        <div class="proj-tags">
+          <span class="proj-tag">Turnkey</span>
+          <span class="proj-tag">International</span>
+          <span class="proj-tag">Eng. Office</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════ SKILLS ════════════════════ -->
+<section class="section" id="skills">
+  <div class="container">
+    <div class="tag reveal" data-i18n="sk-tag">Competencias</div>
+    <h2 class="title reveal d1" data-i18n="sk-title">Skills &<br><span class="gold">Expertise</span></h2>
+
+    <div class="skills-grid">
+
+      <div class="sk-box reveal d1">
+        <div class="sk-cat" data-i18n="sk-c1">Project & Operations Management</div>
+        <div class="sk-rows">
+          <div class="sk-row">
+            <span class="sk-name" data-i18n="s11">Project Management</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="95"></div></div>
+          </div>
+          <div class="sk-row">
+            <span class="sk-name" data-i18n="s12">Stakeholder Communication</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="93"></div></div>
+          </div>
+          <div class="sk-row">
+            <span class="sk-name" data-i18n="s13">Budget Control</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="90"></div></div>
+          </div>
+          <div class="sk-row">
+            <span class="sk-name" data-i18n="s14">Agile · Lean Methodologies</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="86"></div></div>
+          </div>
+          <div class="sk-row">
+            <span class="sk-name" data-i18n="s15">Change Management</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="91"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sk-box reveal d2">
+        <div class="sk-cat" data-i18n="sk-c2">Quality · Process · Documentation</div>
+        <div class="sk-rows">
+          <div class="sk-row">
+            <span class="sk-name">ISO 9001 / ISO 14000</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="97"></div></div>
+          </div>
+          <div class="sk-row">
+            <span class="sk-name">ISO 12215</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="95"></div></div>
+          </div>
+          <div class="sk-row">
+            <span class="sk-name" data-i18n="s23">SOP Documentation</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="97"></div></div>
+          </div>
+          <div class="sk-row">
+            <span class="sk-name" data-i18n="s24">Process Optimization</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="93"></div></div>
+          </div>
+          <div class="sk-row">
+            <span class="sk-name" data-i18n="s25">Risk Assessment</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="88"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sk-box reveal d1">
+        <div class="sk-cat" data-i18n="sk-c3">Naval & Technical Engineering</div>
+        <div class="sk-rows">
+          <div class="sk-row">
+            <span class="sk-name" data-i18n="s31">Naval Architecture</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="92"></div></div>
+          </div>
+          <div class="sk-row">
+            <span class="sk-name" data-i18n="s32">Composite Materials</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="94"></div></div>
+          </div>
+          <div class="sk-row">
+            <span class="sk-name" data-i18n="s33">Structural Calculations</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="87"></div></div>
+          </div>
+          <div class="sk-row">
+            <span class="sk-name" data-i18n="s34">Yacht Design & Consulting</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="90"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sk-box reveal d2">
+        <div class="sk-cat" data-i18n="sk-c4">Tools & Technology</div>
+        <div class="tool-cloud">
+          <span class="tool">Monday</span>
+          <span class="tool">Notion</span>
+          <span class="tool">MS Project</span>
+          <span class="tool">AutoCAD</span>
+          <span class="tool">Rhinoceros</span>
+          <span class="tool">Maxsurf</span>
+          <span class="tool">Hidromax</span>
+          <span class="tool">Microstation</span>
+          <span class="tool">Shipshape</span>
+          <span class="tool">SCT</span>
+          <span class="tool">Vray</span>
+          <span class="tool">Pandora</span>
+          <span class="tool">Lightroom</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════ CERTS & EDUCATION ════════════════════ -->
+<section class="section" id="certs">
+  <div class="container">
+    <div class="tag reveal" data-i18n="cert-tag">Formación & Certificaciones</div>
+    <h2 class="title reveal d1" data-i18n="cert-title">Credenciales<br><span class="gold">& Formación</span></h2>
+
+    <!-- Education -->
+    <div class="edu-grid">
+      <div class="edu-card reveal d1">
+        <div class="edu-yr">2000 — 2009</div>
+        <div class="edu-deg" data-i18n="ed1">Ingeniería Naval y Oceánica</div>
+        <div class="edu-sch">Escuela Politécnica Superior · Universidade da Coruña</div>
+      </div>
+      <div class="edu-card reveal d2">
+        <div class="edu-yr">2010 — 2011</div>
+        <div class="edu-deg" data-i18n="ed2">Master en Gestión de la Calidad y Gestión Ambiental</div>
+        <div class="edu-sch">ICA Training Academy · AEC & EOQ Accredited</div>
+      </div>
+      <div class="edu-card reveal d3">
+        <div class="edu-yr">2009</div>
+        <div class="edu-deg" data-i18n="ed3">Certificación Formador de Formadores (380h)</div>
+        <div class="edu-sch">Universidad Nebrija</div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="cert-grid">
+      <div class="cert-card reveal d1">
+        <div class="cert-icon">⚙️</div>
+        <div class="cert-name" data-i18n="c1n">COIN Nº 3088</div>
+        <div class="cert-body" data-i18n="c1b">Colegiada · Colegio Oficial de Ingenieros Navales</div>
+      </div>
+      <div class="cert-card reveal d2">
+        <div class="cert-icon">🌐</div>
+        <div class="cert-name">ISO/WD 12215 WG18</div>
+        <div class="cert-body" data-i18n="c2b">Miembro Comité Técnico ISO · Embarcaciones multicasco</div>
+      </div>
+      <div class="cert-card reveal d3">
+        <div class="cert-icon">📏</div>
+        <div class="cert-name">ISO 12215</div>
+        <div class="cert-body" data-i18n="c3b">Escantillonado embarcaciones de recreo &lt;24m</div>
+      </div>
+      <div class="cert-card reveal d1">
+        <div class="cert-icon">⛵</div>
+        <div class="cert-name" data-i18n="c4n">PER — Patrón de Embarcaciones</div>
+        <div class="cert-body" data-i18n="c4b">Habilitación a vela y motor</div>
+      </div>
+      <div class="cert-card reveal d2">
+        <div class="cert-icon">🤿</div>
+        <div class="cert-name">PADI Open Water</div>
+        <div class="cert-body" data-i18n="c5b">Scuba Diver · Open Water Certified</div>
+      </div>
+      <div class="cert-card reveal d3">
+        <div class="cert-icon">💻</div>
+        <div class="cert-name" data-i18n="c6n">Software SCT — TAN S.L.</div>
+        <div class="cert-body" data-i18n="c6b">Colaboración en desarrollo software para escantillonado ISO</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════ CONTACT ════════════════════ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="tag reveal" style="justify-content:center" data-i18n="ct-tag">Contacto</div>
+      <h2 class="title reveal d1" data-i18n="ct-title">¿Trabajamos<br><span class="gold">juntos?</span></h2>
+      <p class="reveal d2" data-i18n="ct-desc">
+        Si buscas un Project Manager con mentalidad de ingeniero, capacidad de ejecución probada y criterio técnico real, hablemos.
+        Disponible para proyectos en España e internacionales.
+      </p>
+      <div class="contact-links reveal d3">
+        <a href="mailto:nperez028@gmail.com" class="c-link primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          nperez028@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/nerea-perez-hanstaiger/" target="_blank" rel="noopener" class="c-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="tel:+34647111633" class="c-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.44a16 16 0 0 0 5.55 5.55l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+          +34 647 111 633
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="foot-inner">
+      <div class="foot-copy">© 2024–2026 Nerea Pérez · Alicante, Spain</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <svg width="26" height="26" viewBox="0 0 38 38" fill="none">
+          <path d="M3 33V5H8.5L20.5 25V5H26V33H20.5L8.5 13V33H3Z" fill="#C9A55A" opacity=".6"/>
+        </svg>
+        <span class="foot-role">Naval Engineer · Project Manager · Process Consultant</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ════════════════════ JS ════════════════════ -->
+<script>
+/* ───────── TRANSLATIONS ───────── */
+const T = {
+  es:{
+    'nav-about':'Sobre mí','nav-exp':'Experiencia','nav-proj':'Proyectos','nav-skills':'Skills','nav-contact':'Contacto',
+    'hero-tag':'Naval Engineer · Project Manager · Alicante, Spain',
+    'hero-sub':'Project Manager con más de 15 años convirtiendo proyectos de ingeniería complejos en resultados medibles. Engineering mindset aplicado a la gestión estratégica, la calidad y la operativa real.',
+    'p1':'Project Manager','p2':'Naval Engineer','p3':'Technical Writer','p4':'Process Consultant','p5':'ISO 9001 · 14000',
+    'cta1':'Trabajemos juntos →','cta2':'Ver trayectoria','scroll':'Scroll',
+    'm1-lbl':'Años de experiencia','m1-sub':'Engineering · PM · Operations',
+    'm2-lbl':'Proyectos internacionales','m2-sub':'Simultáneos · End-to-end',
+    'm3-lbl':'Profesionales liderados','m3-sub':'Equipos multidisciplinares',
+    'about-tag':'Sobre mí','about-title':'Engineering Mindset.<br><span class="gold">Project Execution.</span>',
+    'about-bio1':'Ingeniera Naval con <strong>más de 15 años</strong> en la intersección entre ingeniería técnica y gestión de proyectos. Fundé y escalé <strong>Hanstaiger S.L.</strong> desde cero — una planta de manufactura avanzada en materiales compuestos — liderando la cartera completa de proyectos internacionales con equipos de hasta 50 profesionales.',
+    'about-bio2':'Hoy trabajo como <strong>Consultora Independiente</strong> en optimización de procesos, technical writing y calidad. Miembro del Comité Técnico <strong>ISO/WD 12215 WG18</strong> para embarcaciones multicasco. Colegiada COIN Nº 3088.',
+    'hl1-t':'Technical Writing','hl1-d':'SOPs, manuales técnicos y gobernanza documental',
+    'hl2-t':'Full Lifecycle PM','hl2-d':'Del concepto a la entrega llave en mano',
+    'hl3-t':'ISO Quality Expert','hl3-d':'ISO 9001, ISO 14000, ISO 12215',
+    'hl4-t':'Proyectos Internacionales','hl4-d':'Equipos multiculturales · documentación bilingüe',
+    'exp-tag':'Experiencia profesional','exp-title':'Trayectoria<br><span class="gold">Profesional</span>',
+    'present':'Presente',
+    'e1-co':'Consultora Independiente de Procesos',
+    'e1-b1':'<strong>Optimización de procesos</strong> para empresas industriales y tecnológicas',
+    'e1-b2':'<strong>Technical Writing</strong> — SOPs complejos, manuales y arquitectura de información',
+    'e1-b3':'Asesoría ISO 9001 y gestión de proyectos técnicos end-to-end',
+    'e2-b1':'<strong>Ciclo de vida completo</strong> de proyectos en sostenibilidad y materiales avanzados',
+    'e2-b2':'Coordinación técnica entre ingeniería, producción y colaboradores externos',
+    'e2-b3':'Implantación de <strong>mejora continua</strong> y documentación técnica',
+    'e3-b1':'Fundación y escalado desde cero de <strong>planta de manufactura en materiales compuestos</strong>',
+    'e3-b2':'Dirección de <strong>+15 proyectos internacionales</strong> simultáneos · diseño → llave en mano',
+    'e3-b3':'Arquitectura documental completa: specs técnicas, SOPs, manuales de mantenimiento',
+    'e3-b4':'Liderazgo de equipos multidisciplinares de <strong>hasta 50 profesionales</strong>',
+    'e4-b1':'Oficina técnica para <strong>proyectos náuticos internacionales</strong> llave en mano',
+    'e4-b2':'Documentación de ingeniería completa: viabilidad, cálculos estructurales',
+    'e4-b3':'Gestión del cambio con <strong>stakeholders multiculturales</strong> y documentación bilingüe',
+    'e5-b1':'Coordinación de producción y planificación técnica de <strong>proyectos industriales a gran escala</strong>',
+    'e5-b2':'Supervisión de estándares de calidad, PRL y gestión de subcontratas',
+    'e6-b1':'Modelos 3D avanzados y planos de <strong>ingeniería de detalle</strong> para industria pesada',
+    'e6-b2':'Gestión de configuración y análisis de mantenimiento técnico (AMT) — <strong>Navantia</strong>',
+    'proj-tag':'Proyectos destacados','proj-title':'Del concepto al<br><span class="gold">Masterpiece</span>',
+    'pr1-role':'Fundadora & Project Director',
+    'pr1-desc':'Multihull de alto rendimiento en materiales compuestos avanzados. Proyecto internacional desde el concepto y estudio de viabilidad hasta la entrega llave en mano.',
+    'pr2-role':'Naval Engineering & Interior Consulting',
+    'pr2-desc':'Cero emisiones, máximo rendimiento. Consultoría naval y coordinación de interiores de alta gama para catamarán de 50 pies con propulsión eléctrica.',
+    'pr3-role':'PM · Design Coordination · 2024',
+    'pr3-desc':'Dirección y coordinación técnica de proyecto residencial de alta gama. Gestión integral: planificación, selección de materiales y documentación técnica completa.',
+    'pr4-role':'Yacht Consulting & Material Selection',
+    'pr4-desc':'Selección y coordinación de materiales premium (Spradling, Fenix, Little Greene) para interiores náuticos de lujo. Moodboards técnicos y especificaciones de acabados.',
+    'pr5-role':'Project Manager · Process Consultant',
+    'pr5-desc':'Gestión de proyectos estratégicos en sostenibilidad y materiales avanzados. Control de calidad, stakeholders y documentación técnica en sector industrial multisectorial.',
+    'pr6-role':'Technical Director & Founder',
+    'pr6-desc':'Dirección técnica de oficina de ingeniería especializada en proyectos náuticos internacionales. Presupuestos, cronogramas de contratistas y ciclo de vida técnico completo.',
+    'sk-tag':'Competencias','sk-title':'Skills &<br><span class="gold">Expertise</span>',
+    'sk-c1':'Project & Operations Management','sk-c2':'Quality · Process · Documentation',
+    'sk-c3':'Naval & Technical Engineering','sk-c4':'Tools & Technology',
+    's11':'Project Management','s12':'Stakeholder Communication','s13':'Budget Control','s14':'Agile · Lean Methodologies','s15':'Change Management',
+    's23':'SOP Documentation','s24':'Process Optimization','s25':'Risk Assessment',
+    's31':'Naval Architecture','s32':'Composite Materials','s33':'Structural Calculations','s34':'Yacht Design & Consulting',
+    'cert-tag':'Formación & Certificaciones','cert-title':'Credenciales<br><span class="gold">& Formación</span>',
+    'ed1':'Ingeniería Naval y Oceánica','ed2':'Master en Gestión de la Calidad y Gestión Ambiental','ed3':'Certificación Formador de Formadores (380h)',
+    'c1n':'COIN Nº 3088','c1b':'Colegiada · Colegio Oficial de Ingenieros Navales',
+    'c2b':'Miembro Comité Técnico ISO · Embarcaciones multicasco',
+    'c3b':'Escantillonado embarcaciones de recreo <24m',
+    'c4n':'PER — Patrón de Embarcaciones','c4b':'Habilitación a vela y motor',
+    'c5b':'Scuba Diver · Open Water Certified',
+    'c6n':'Software SCT — TAN S.L.','c6b':'Colaboración en desarrollo software para escantillonado ISO',
+    'ct-tag':'Contacto','ct-title':'¿Trabajamos<br><span class="gold">juntos?</span>',
+    'ct-desc':'Si buscas un Project Manager con mentalidad de ingeniero, capacidad de ejecución probada y criterio técnico real, hablemos. Disponible para proyectos en España e internacionales.'
+  },
+  en:{
+    'nav-about':'About','nav-exp':'Experience','nav-proj':'Projects','nav-skills':'Skills','nav-contact':'Contact',
+    'hero-tag':'Naval Engineer · Project Manager · Alicante, Spain',
+    'hero-sub':'Project Manager with 15+ years turning complex engineering projects into measurable results. Engineering mindset applied to strategic management, quality and real operational execution.',
+    'p1':'Project Manager','p2':'Naval Engineer','p3':'Technical Writer','p4':'Process Consultant','p5':'ISO 9001 · 14000',
+    'cta1':"Let's work together →",'cta2':'View career','scroll':'Scroll',
+    'm1-lbl':'Years of experience','m1-sub':'Engineering · PM · Operations',
+    'm2-lbl':'International projects','m2-sub':'Simultaneous · End-to-end',
+    'm3-lbl':'Professionals led','m3-sub':'Multidisciplinary teams',
+    'about-tag':'About me','about-title':'Engineering Mindset.<br><span class="gold">Project Execution.</span>',
+    'about-bio1':'Naval Engineer with <strong>15+ years</strong> at the intersection of technical engineering and project management. I founded and scaled <strong>Hanstaiger S.L.</strong> from scratch — an advanced composite materials manufacturing plant — leading a full portfolio of international projects with teams of up to 50 professionals.',
+    'about-bio2':'Today I work as an <strong>Independent Consultant</strong> in process optimization, technical writing and quality management. Member of the <strong>ISO/WD 12215 WG18</strong> Technical Committee for multihull vessels. COIN member Nº 3088.',
+    'hl1-t':'Technical Writing','hl1-d':'SOPs, technical manuals & document governance',
+    'hl2-t':'Full Lifecycle PM','hl2-d':'From concept to turnkey delivery',
+    'hl3-t':'ISO Quality Expert','hl3-d':'ISO 9001, ISO 14000, ISO 12215',
+    'hl4-t':'International Projects','hl4-d':'Multicultural teams · bilingual documentation',
+    'exp-tag':'Professional experience','exp-title':'Professional<br><span class="gold">Journey</span>',
+    'present':'Present',
+    'e1-co':'Independent Process Consultant',
+    'e1-b1':'<strong>Process optimization</strong> for industrial and technology companies',
+    'e1-b2':'<strong>Technical Writing</strong> — complex SOPs, technical manuals and information architecture',
+    'e1-b3':'ISO 9001 advisory and end-to-end technical project management',
+    'e2-b1':'<strong>Full project lifecycle management</strong> in sustainability and advanced materials',
+    'e2-b2':'Technical coordination between engineering, production and external partners',
+    'e2-b3':'Implementation of <strong>continuous improvement</strong> methodologies and technical documentation',
+    'e3-b1':'Founded and scaled from scratch an <strong>advanced composite materials manufacturing plant</strong>',
+    'e3-b2':'Management of <strong>15+ simultaneous international projects</strong> · design → turnkey delivery',
+    'e3-b3':'Full documentation architecture: technical specs, SOPs, maintenance manuals',
+    'e3-b4':'Leadership of multidisciplinary teams of <strong>up to 50 professionals</strong>',
+    'e4-b1':'Technical office for <strong>international nautical turnkey projects</strong>',
+    'e4-b2':'Complete engineering documentation: feasibility studies, structural calculations',
+    'e4-b3':'Change management with <strong>multicultural stakeholders</strong> and bilingual documentation',
+    'e5-b1':'Production coordination and technical planning of <strong>large-scale industrial projects</strong>',
+    'e5-b2':'Supervision of quality standards, safety protocols and subcontractor management',
+    'e6-b1':'Advanced 3D models and <strong>detailed engineering</strong> drawings for heavy industry',
+    'e6-b2':'Configuration management and technical maintenance analysis (AMT) — <strong>Navantia</strong>',
+    'proj-tag':'Featured projects','proj-title':'From concept to<br><span class="gold">Masterpiece</span>',
+    'pr1-role':'Founder & Project Director',
+    'pr1-desc':'High-performance multihull built from advanced composite materials. International project from concept and feasibility study to turnkey delivery.',
+    'pr2-role':'Naval Engineering & Interior Consulting',
+    'pr2-desc':'Zero emissions, maximum performance. Naval consulting and high-end interior coordination for a 50-foot electric-propulsion catamaran.',
+    'pr3-role':'PM · Design Coordination · 2024',
+    'pr3-desc':'Technical direction and coordination of a high-end residential project. Full management from planning and material selection to complete technical documentation.',
+    'pr4-role':'Yacht Consulting & Material Selection',
+    'pr4-desc':'Selection and coordination of premium materials (Spradling, Fenix, Little Greene) for luxury nautical interiors. Technical moodboards and finish specifications.',
+    'pr5-role':'Project Manager · Process Consultant',
+    'pr5-desc':'Strategic project management in sustainability and advanced materials. Quality control, stakeholders and technical documentation in a multi-sector industrial environment.',
+    'pr6-role':'Technical Director & Founder',
+    'pr6-desc':'Technical management of engineering office specialized in international nautical turnkey projects. Budgets, contractor schedules and full technical project lifecycle.',
+    'sk-tag':'Competencies','sk-title':'Skills &<br><span class="gold">Expertise</span>',
+    'sk-c1':'Project & Operations Management','sk-c2':'Quality · Process · Documentation',
+    'sk-c3':'Naval & Technical Engineering','sk-c4':'Tools & Technology',
+    's11':'Project Management','s12':'Stakeholder Communication','s13':'Budget Control','s14':'Agile · Lean Methodologies','s15':'Change Management',
+    's23':'SOP Documentation','s24':'Process Optimization','s25':'Risk Assessment',
+    's31':'Naval Architecture','s32':'Composite Materials','s33':'Structural Calculations','s34':'Yacht Design & Consulting',
+    'cert-tag':'Education & Certifications','cert-title':'Credentials<br><span class="gold">& Education</span>',
+    'ed1':'Naval & Ocean Engineering','ed2':'Master in Quality & Environmental Management','ed3':'Train the Trainers Certification (380h)',
+    'c1n':'COIN Nº 3088','c1b':'Member · Official College of Naval Engineers',
+    'c2b':'ISO Technical Committee Member · Multihull vessels',
+    'c3b':'Scantling of recreational craft under 24m',
+    'c4n':'PER — Vessel Skipper','c4b':'Sail & Motor qualification',
+    'c5b':'Scuba Diver · Open Water Certified',
+    'c6n':'SCT Software — TAN S.L.','c6b':'Collaboration on ISO scantling software development',
+    'ct-tag':'Contact','ct-title':"Let's work<br><span class=\"gold\">together?</span>",
+    'ct-desc':"If you're looking for a Project Manager with an engineering mindset, proven execution capacity and real technical judgment, let's talk. Available for projects in Spain and internationally."
+  }
+};
+
+let lang = 'es';
+
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll('.lbtn').forEach(b => b.classList.toggle('active', b.textContent === l.toUpperCase()));
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (T[l]?.[k] !== undefined) el.innerHTML = T[l][k];
+  });
+}
+
+/* ───────── NAV SCROLL ───────── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 55), {passive:true});
+
+/* ───────── BURGER ───────── */
+const drawer = document.getElementById('drawer');
+function toggleBurger() { drawer.classList.toggle('open'); }
+function closeBurger()  { drawer.classList.remove('open'); }
+
+/* ───────── REVEAL ON SCROLL ───────── */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: .1, rootMargin: '0px 0px -55px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+/* ───────── COUNTERS ───────── */
+function runCounter(el) {
+  const target = +el.dataset.target, dur = 2200, s = performance.now();
+  const tick = t => {
+    const prog = Math.min((t-s)/dur,1);
+    const ease = 1 - Math.pow(1-prog, 3);
+    el.textContent = Math.floor(ease*target);
+    if (prog < 1) requestAnimationFrame(tick);
+    else el.textContent = target;
+  };
+  requestAnimationFrame(tick);
+}
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { runCounter(e.target); cntObs.unobserve(e.target); }});
+}, {threshold:.5});
+document.querySelectorAll('.counter').forEach(c => cntObs.observe(c));
+
+/* ───────── SKILL BARS ───────── */
+const skObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.sk-bar').forEach(b => {
+        setTimeout(() => { b.style.width = b.dataset.w + '%'; }, 250);
+      });
+      skObs.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+document.querySelectorAll('.sk-box').forEach(b => skObs.observe(b));
+</script>
+
+</body>
+</html>
