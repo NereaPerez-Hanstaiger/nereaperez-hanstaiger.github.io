@@ -318,6 +318,39 @@
       opacity: .7;
     }
 
+    /* Keyword tagline (header) — mono, uppercase, gold */
+    .hero-tagline {
+      max-width: 640px;
+      margin-bottom: 30px;
+    }
+    .hero-roles {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      line-height: 2.05;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .hero-roles .sep { opacity: .45; margin: 0 3px; }
+    .hero-roles .pm {
+      font-weight: 700;
+      font-size: 12.5px;
+      letter-spacing: .18em;
+    }
+    .hero-roles .k { font-weight: 600; }
+    .hero-loc {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .8;
+    }
+
     .hero-name {
       font-family: 'Playfair Display', serif;
       font-size: clamp(4rem, 10vw, 9rem);
@@ -354,6 +387,13 @@
       transition: all var(--t) var(--ease);
     }
     .pill:hover { border-color: var(--border-h); color: var(--gold); }
+    .pill.pill-key {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #0A0A10;
+      font-weight: 700;
+    }
+    .pill.pill-key:hover { color: #0A0A10; }
 
     .cta-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 
@@ -1115,7 +1155,7 @@
           <path d="M3 33V5H8.5L20.5 25V5H26V33H20.5L8.5 13V33H3Z" fill="#C9A55A"/>
           <path d="M28 5H35.5C38.5 5 41 7.5 41 10.5C41 13.5 38.5 16 35.5 16H32V33H28V5ZM32 12.5H35.5C36.6 12.5 37.5 11.6 37.5 10.5C37.5 9.4 36.6 8.5 35.5 8.5H32V12.5Z" fill="rgba(201,165,90,0.45)"/>
         </svg>
-        <span>Naval Engineer · PM</span>
+        <span data-i18n="logo-sub">Project Manager · Consulting</span>
       </a>
 
       <!-- Desktop links -->
@@ -1159,9 +1199,12 @@
   <div class="container">
     <div class="hero-content">
 
-      <div class="hero-eyebrow reveal">
-        <div class="hero-eyebrow-line"></div>
-        <span data-i18n="hero-tag">Naval Engineer · Project Manager · Alicante, Spain</span>
+      <div class="hero-tagline reveal">
+        <div class="hero-roles" data-i18n="hero-roles"><span class="pm">Project Manager</span><span class="sep">|</span>Consultora de Procesos y Operaciones<span class="sep">|</span>Technical Writer<span class="sep">|</span>Gestión del Conocimiento e <span class="k">ISO 9001</span><span class="sep">|</span>Metodologías Ágiles &amp; Gestión del Cambio</div>
+        <div class="hero-loc">
+          <span class="hero-eyebrow-line"></span>
+          <span data-i18n="hero-loc">Alicante, Spain</span>
+        </div>
       </div>
 
       <h1 class="hero-name reveal d1">
@@ -1170,16 +1213,17 @@
       </h1>
 
       <p class="hero-sub reveal d2" data-i18n="hero-sub">
-        Project Manager con más de 15 años convirtiendo proyectos de ingeniería complejos en resultados medibles.
-        Engineering mindset aplicado a la gestión estratégica, la calidad y la operativa real.
+        Más de 15 años convirtiendo proyectos complejos en resultados medibles.
+        Engineering mindset aplicado a la gestión de proyectos, la optimización de procesos, la calidad y la operativa real.
       </p>
 
       <div class="pill-row reveal d3">
-        <span class="pill" data-i18n="p1">Project Manager</span>
-        <span class="pill" data-i18n="p2">Naval Engineer</span>
+        <span class="pill pill-key" data-i18n="p1">Project Manager</span>
+        <span class="pill" data-i18n="p2">Consultora de Procesos &amp; Operaciones</span>
         <span class="pill" data-i18n="p3">Technical Writer</span>
-        <span class="pill" data-i18n="p4">Process Consultant</span>
-        <span class="pill" data-i18n="p5">ISO 9001 · 14000</span>
+        <span class="pill" data-i18n="p4">Gestión del Conocimiento</span>
+        <span class="pill" data-i18n="p5">ISO 9001</span>
+        <span class="pill" data-i18n="p6">Metodologías Ágiles &amp; Gestión del Cambio</span>
       </div>
 
       <div class="cta-row reveal d4">
@@ -1252,8 +1296,8 @@
         </div>
         <div class="photo-acc1"></div>
         <div class="photo-acc2"></div>
-        <div class="photo-badge">
-          ⚓<br>Naval Engineer<br>& Project Manager
+        <div class="photo-badge" data-i18n="badge">
+          Project Manager
         </div>
       </div>
 
@@ -1714,7 +1758,7 @@
         <svg width="26" height="26" viewBox="0 0 38 38" fill="none">
           <path d="M3 33V5H8.5L20.5 25V5H26V33H20.5L8.5 13V33H3Z" fill="#C9A55A" opacity=".6"/>
         </svg>
-        <span class="foot-role">Naval Engineer · Project Manager · Process Consultant</span>
+        <span class="foot-role" data-i18n="foot-role">Project Manager · Consultora de Procesos &amp; Operaciones · Technical Writer</span>
       </div>
     </div>
   </div>
@@ -1727,9 +1771,13 @@
 const T = {
   es:{
     'nav-about':'Sobre mí','nav-exp':'Experiencia','nav-proj':'Proyectos','nav-skills':'Skills','nav-contact':'Contacto',
-    'hero-tag':'Naval Engineer · Project Manager · Alicante, Spain',
-    'hero-sub':'Project Manager con más de 15 años convirtiendo proyectos de ingeniería complejos en resultados medibles. Engineering mindset aplicado a la gestión estratégica, la calidad y la operativa real.',
-    'p1':'Project Manager','p2':'Naval Engineer','p3':'Technical Writer','p4':'Process Consultant','p5':'ISO 9001 · 14000',
+    'logo-sub':'Project Manager · Consulting',
+    'hero-roles':'<span class="pm">Project Manager</span><span class="sep">|</span>Consultora de Procesos y Operaciones<span class="sep">|</span>Technical Writer<span class="sep">|</span>Gestión del Conocimiento e <span class="k">ISO 9001</span><span class="sep">|</span>Metodologías Ágiles &amp; Gestión del Cambio',
+    'hero-loc':'Alicante, Spain',
+    'badge':'Project Manager',
+    'foot-role':'Project Manager · Consultora de Procesos &amp; Operaciones · Technical Writer',
+    'hero-sub':'Más de 15 años convirtiendo proyectos complejos en resultados medibles. Engineering mindset aplicado a la gestión de proyectos, la optimización de procesos, la calidad y la operativa real.',
+    'p1':'Project Manager','p2':'Consultora de Procesos &amp; Operaciones','p3':'Technical Writer','p4':'Gestión del Conocimiento','p5':'ISO 9001','p6':'Metodologías Ágiles &amp; Gestión del Cambio',
     'cta1':'Trabajemos juntos →','cta2':'Ver trayectoria','scroll':'Scroll',
     'm1-lbl':'Años de experiencia','m1-sub':'Engineering · PM · Operations',
     'm2-lbl':'Proyectos internacionales','m2-sub':'Simultáneos · End-to-end',
@@ -1793,9 +1841,13 @@ const T = {
   },
   en:{
     'nav-about':'About','nav-exp':'Experience','nav-proj':'Projects','nav-skills':'Skills','nav-contact':'Contact',
-    'hero-tag':'Naval Engineer · Project Manager · Alicante, Spain',
-    'hero-sub':'Project Manager with 15+ years turning complex engineering projects into measurable results. Engineering mindset applied to strategic management, quality and real operational execution.',
-    'p1':'Project Manager','p2':'Naval Engineer','p3':'Technical Writer','p4':'Process Consultant','p5':'ISO 9001 · 14000',
+    'logo-sub':'Project Manager · Consulting',
+    'hero-roles':'<span class="pm">Project Manager</span><span class="sep">|</span>Process &amp; Operations Consultant<span class="sep">|</span>Technical Writer<span class="sep">|</span>Knowledge Management &amp; <span class="k">ISO 9001</span><span class="sep">|</span>Agile Methodologies &amp; Change Management',
+    'hero-loc':'Alicante, Spain',
+    'badge':'Project Manager',
+    'foot-role':'Project Manager · Process &amp; Operations Consultant · Technical Writer',
+    'hero-sub':'15+ years turning complex projects into measurable results. Engineering mindset applied to project management, process optimization, quality and real operational execution.',
+    'p1':'Project Manager','p2':'Process &amp; Operations Consultant','p3':'Technical Writer','p4':'Knowledge Management','p5':'ISO 9001','p6':'Agile &amp; Change Management',
     'cta1':"Let's work together →",'cta2':'View career','scroll':'Scroll',
     'm1-lbl':'Years of experience','m1-sub':'Engineering · PM · Operations',
     'm2-lbl':'International projects','m2-sub':'Simultaneous · End-to-end',
