@@ -1129,6 +1129,38 @@
       display: block;
       border: 0;
     }
+    .sb-video { cursor: pointer; }
+    .sb-poster { transition: transform .5s var(--ease), filter .3s var(--ease); }
+    .sb-video:hover .sb-poster { transform: scale(1.04); filter: brightness(.85); }
+    .sb-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      z-index: 4;
+      width: 64px; height: 64px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--gold);
+      color: #0A0A10;
+      border-radius: 50%;
+      box-shadow: 0 8px 30px rgba(201,165,90,.45);
+      transition: transform .3s var(--ease), background .3s;
+    }
+    .sb-play svg { width: 26px; height: 26px; margin-left: 3px; }
+    .sb-video:hover .sb-play { transform: translate(-50%,-50%) scale(1.1); }
+    /* pulse ring */
+    .sb-play::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      opacity: .5;
+      animation: pulse 2.2s ease-out infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: .5; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
     .sb-video-badge {
       position: absolute;
       top: 14px;
@@ -1953,15 +1985,12 @@
 
     <!-- Featured project -->
     <div class="sb-feature reveal d2">
-      <div class="sb-video">
+      <div class="sb-video" id="sbVideo" data-yt="YXmUoLoQC-g" onclick="playSandbox()" role="button" tabindex="0" aria-label="Reproducir vídeo Master-Check D36">
         <span class="sb-video-badge">⚓ Master-Check D36</span>
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/YXmUoLoQC-g?rel=0&modestbranding=1&playsinline=1"
-          title="Master-Check D36 — Demo"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen></iframe>
+        <img src="sandbox-poster-v.jpg" alt="Master-Check D36 — demo del protocolo técnico" class="sb-poster" loading="lazy">
+        <span class="sb-play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </span>
       </div>
 
       <div class="sb-feat-body">
@@ -2425,6 +2454,24 @@ function setLang(l) {
     const k = el.getAttribute('data-i18n');
     if (T[l]?.[k] !== undefined) el.innerHTML = T[l][k];
   });
+}
+
+/* ───────── SANDBOX VIDEO (click-to-play) ───────── */
+function playSandbox() {
+  var box = document.getElementById('sbVideo');
+  if (!box || box.dataset.loaded) return;
+  box.dataset.loaded = '1';
+  var id = box.dataset.yt;
+  var f = document.createElement('iframe');
+  f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+  f.title = 'Master-Check D36 — Demo';
+  f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  f.setAttribute('allowfullscreen', '');
+  f.setAttribute('frameborder', '0');
+  var poster = box.querySelector('.sb-poster'), play = box.querySelector('.sb-play');
+  if (poster) poster.remove();
+  if (play) play.remove();
+  box.appendChild(f);
 }
 
 /* ───────── NAV SCROLL ───────── */
