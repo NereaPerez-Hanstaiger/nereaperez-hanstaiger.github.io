@@ -351,16 +351,32 @@
       opacity: .8;
     }
 
-    .hero-name {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(4rem, 10vw, 9rem);
-      font-weight: 700;
-      line-height: .92;
-      letter-spacing: -.025em;
-      margin-bottom: 30px;
+    /* Name kicker */
+    .hero-name-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(.95rem, 1.9vw, 1.25rem);
+      font-weight: 500;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 20px;
     }
-    .hero-name .first  { display: block; color: var(--text); }
-    .hero-name .last   { display: block; color: var(--gold); }
+    .hero-name-kicker .first { color: var(--text); }
+    .hero-name-kicker .last  { color: var(--gold); }
+
+    /* Big value-proposition headline */
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.7rem, 6.6vw, 5.6rem);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -.02em;
+      color: var(--text);
+      margin-bottom: 30px;
+      max-width: 740px;
+    }
+    .hero-headline .gold { color: var(--gold); font-style: italic; }
+    .d1b { transition-delay: .18s; }
 
     .hero-sub {
       font-size: clamp(.95rem, 1.8vw, 1.15rem);
@@ -674,6 +690,114 @@
     /* ─────────────────────────────────────────
        EXPERIENCE TIMELINE
     ───────────────────────────────────────── */
+    /* ─────────────────────────────────────────
+       PERSONAL / SOBRE MÍ
+    ───────────────────────────────────────── */
+    #personal {
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+    }
+    #personal::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 85% 20%, rgba(201,165,90,.06) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 50% at 10% 90%, rgba(39,96,184,.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    /* Big decorative NP monogram */
+    .personal-wm {
+      position: absolute;
+      right: -40px;
+      bottom: -90px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(200px, 26vw, 400px);
+      font-weight: 700;
+      line-height: .8;
+      color: rgba(201,165,90,.035);
+      user-select: none;
+      pointer-events: none;
+      letter-spacing: -.04em;
+    }
+    .personal-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+    }
+    /* Opening pull-quote */
+    .personal-lead {
+      position: relative;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3.4vw, 2.9rem);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 40px;
+      max-width: 760px;
+    }
+    .personal-lead .accent { color: var(--gold); font-style: italic; }
+    /* Big quote mark */
+    .personal-quote {
+      position: absolute;
+      top: -46px;
+      left: -18px;
+      font-family: 'Playfair Display', serif;
+      font-size: 150px;
+      line-height: 1;
+      color: var(--gold);
+      opacity: .14;
+      pointer-events: none;
+    }
+    .personal-body { max-width: 700px; }
+    .personal-body p {
+      font-size: 1.06rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .personal-body p strong { color: var(--text); font-weight: 600; }
+    .personal-body .gold-name { color: var(--gold); font-weight: 600; }
+    /* Interest chips */
+    .interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 40px;
+      padding-top: 34px;
+      border-top: 1px solid var(--border);
+    }
+    .interest {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 20px 11px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text);
+      transition: all var(--t) var(--ease);
+    }
+    .interest:hover {
+      border-color: var(--border-h);
+      transform: translateY(-2px);
+    }
+    .interest .ic {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gold-dim);
+      border-radius: 8px;
+      color: var(--gold);
+    }
+    .interest .ic svg { width: 16px; height: 16px; }
+
     #experience { background: var(--bg); }
 
     .tl-cols {
@@ -890,6 +1014,183 @@
     /* ─────────────────────────────────────────
        SKILLS
     ───────────────────────────────────────── */
+    /* ─────────────────────────────────────────
+       AI & AUTOMATION SANDBOX
+    ───────────────────────────────────────── */
+    #sandbox {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 10%, rgba(39,96,184,.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 10% 90%, rgba(201,165,90,.07) 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, #080D18 50%, var(--bg) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    #sandbox::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,165,90,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,165,90,.03) 1px, transparent 1px);
+      background-size: 70px 70px;
+      pointer-events: none;
+    }
+    .sandbox-inner { position: relative; z-index: 1; }
+    .sandbox-head { max-width: 760px; margin-bottom: 56px; }
+    .sandbox-intro {
+      font-size: 1.08rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-top: 8px;
+    }
+    /* Featured project card */
+    .sb-feature {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 48px;
+      background: rgba(12,20,34,.55);
+      border: 1px solid var(--border);
+      border-radius: var(--rL);
+      padding: 36px;
+      backdrop-filter: blur(6px);
+      margin-bottom: 36px;
+    }
+    /* Vertical video phone frame */
+    .sb-video {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #05070d;
+      border: 1px solid rgba(201,165,90,.2);
+      aspect-ratio: 9/16;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+    .sb-video video,
+    .sb-video img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .sb-video-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 3;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(6,7,15,.7);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(201,165,90,.25);
+      padding: 5px 11px;
+      border-radius: 20px;
+    }
+    .sb-feat-body { display: flex; flex-direction: column; }
+    .sb-feat-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .sb-feat-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .sb-feat-sub {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 22px;
+      font-style: italic;
+    }
+    .sb-blocks { display: flex; flex-direction: column; gap: 16px; }
+    .sb-block { }
+    .sb-block-h {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+    .sb-block-h .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+    .sb-block p { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+    .sb-block p strong { color: var(--text); font-weight: 600; }
+    /* Architecture sub-list */
+    .sb-arch { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+    .sb-arch-item {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      padding-left: 16px;
+      position: relative;
+    }
+    .sb-arch-item::before { content: '▹'; position: absolute; left: 0; color: var(--gold); opacity: .7; }
+    .sb-arch-item strong { color: var(--text); font-weight: 600; }
+    /* Tech stack callout */
+    .sb-tech {
+      margin-top: 22px;
+      padding: 18px 20px;
+      background: linear-gradient(135deg, rgba(39,96,184,.12), rgba(201,165,90,.06));
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--gold);
+      border-radius: 10px;
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .sb-tech strong { color: var(--gold); font-weight: 600; }
+    /* Screenshot gallery */
+    .sb-gallery {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+    }
+    .sb-shot {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 16/10;
+      transition: all var(--t) var(--ease);
+    }
+    .sb-shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+    .sb-shot:hover { border-color: var(--border-h); transform: translateY(-3px); }
+    .sb-shot:hover img { transform: scale(1.06); }
+    .sb-shot-cap {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 18px 14px 11px;
+      background: linear-gradient(to top, rgba(6,7,15,.92), transparent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    @media (max-width: 860px) {
+      .sb-feature { grid-template-columns: 1fr; gap: 30px; }
+      .sb-video { max-width: 280px; margin: 0 auto; }
+      .sb-gallery { grid-template-columns: 1fr; }
+    }
+
     #skills { background: var(--bg); }
 
     .skills-grid {
@@ -1018,6 +1319,33 @@
     .cert-icon { font-size: 22px; margin-bottom: 10px; }
     .cert-name { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .cert-body { font-size: 12px; color: var(--muted); line-height: 1.45; }
+    /* Highlighted PMI card */
+    .cert-card.cert-pmi {
+      background: linear-gradient(150deg, rgba(201,165,90,.14) 0%, var(--bg) 65%);
+      border-color: var(--border-h);
+    }
+    .cert-card.cert-pmi::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .cert-card.cert-pmi { position: relative; overflow: hidden; }
+    .cert-pmi .cert-name { color: var(--gold); }
+    .cert-pmi .cert-tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,165,90,.25);
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
 
     /* ─────────────────────────────────────────
        CONTACT
@@ -1160,9 +1488,10 @@
 
       <!-- Desktop links -->
       <ul class="nav-links">
-        <li><a href="#about"      data-i18n="nav-about">Sobre mí</a></li>
+        <li><a href="#about"   data-i18n="nav-about">Sobre mí</a></li>
         <li><a href="#experience" data-i18n="nav-exp">Experiencia</a></li>
         <li><a href="#projects"   data-i18n="nav-proj">Proyectos</a></li>
+        <li><a href="#sandbox"     data-i18n="nav-sandbox">AI Sandbox</a></li>
         <li><a href="#skills"     data-i18n="nav-skills">Skills</a></li>
         <li><a href="#contact"    data-i18n="nav-contact">Contacto</a></li>
       </ul>
@@ -1184,9 +1513,10 @@
 
 <!-- Mobile drawer -->
 <div class="mobile-drawer" id="drawer">
-  <a href="#about"      onclick="closeBurger()" data-i18n="nav-about">Sobre mí</a>
+  <a href="#about"   onclick="closeBurger()" data-i18n="nav-about">Sobre mí</a>
   <a href="#experience" onclick="closeBurger()" data-i18n="nav-exp">Experiencia</a>
   <a href="#projects"   onclick="closeBurger()" data-i18n="nav-proj">Proyectos</a>
+  <a href="#sandbox"     onclick="closeBurger()" data-i18n="nav-sandbox">AI Sandbox</a>
   <a href="#skills"     onclick="closeBurger()" data-i18n="nav-skills">Skills</a>
   <a href="#contact"    onclick="closeBurger()" data-i18n="nav-contact">Contacto</a>
 </div>
@@ -1207,9 +1537,12 @@
         </div>
       </div>
 
-      <h1 class="hero-name reveal d1">
-        <span class="first">Nerea</span>
-        <span class="last">Pérez</span>
+      <div class="hero-name-kicker reveal d1">
+        <span class="first">Nerea</span> <span class="last">Pérez</span>
+      </div>
+
+      <h1 class="hero-headline reveal d1b" data-i18n="hero-headline">
+        Eficiencia y <span class="gold">Ejecución</span> en Proyectos
       </h1>
 
       <p class="hero-sub reveal d2" data-i18n="hero-sub">
@@ -1258,8 +1591,8 @@
         <span class="counter" data-target="15">0</span>
         <span class="metric-plus">+</span>
       </div>
-      <div class="metric-label" data-i18n="m2-lbl">Proyectos internacionales</div>
-      <div class="metric-sub" data-i18n="m2-sub">Simultáneos · End-to-end</div>
+      <div class="metric-label" data-i18n="m2-lbl">Proyectos de Complejidad Técnica</div>
+      <div class="metric-sub" data-i18n="m2-sub">Alcance Nacional e Internacional · End-to-end</div>
     </div>
 
     <div class="metric reveal d3">
@@ -1306,14 +1639,15 @@
         <div class="tag reveal" data-i18n="about-tag">Sobre mí</div>
         <h2 class="title reveal d1" data-i18n="about-title">Engineering Mindset.<br><span class="gold">Project Execution.</span></h2>
         <p class="about-bio reveal d2" data-i18n="about-bio1">
-          Ingeniera Naval con <strong>más de 15 años</strong> en la intersección entre ingeniería técnica y gestión de proyectos.
-          Fundé y escalé <strong>Hanstaiger S.L.</strong> desde cero — una planta de manufactura avanzada en materiales compuestos —
-          liderando la cartera completa de proyectos internacionales con equipos de hasta 50 profesionales.
+          Ingeniera Naval con <strong>más de 15 años</strong> de experiencia en la intersección entre la ingeniería técnica y la gestión de proyectos.
+          Fundé y escalé <strong>Hanstaiger S.L.</strong> desde cero, convirtiéndola en una planta de diseño y construcción de embarcaciones exclusivas de alta gama,
+          donde lideré la cartera completa de proyectos coordinando equipos multidisciplinares de <strong>hasta 50 profesionales</strong>.
         </p>
         <p class="about-bio reveal d3" data-i18n="about-bio2">
-          Hoy trabajo como <strong>Consultora Independiente</strong> en optimización de procesos, technical writing y calidad.
-          Miembro del Comité Técnico <strong>ISO/WD 12215 WG18</strong> para embarcaciones multicasco.
-          Colegiada COIN Nº 3088.
+          Actualmente, enfoco mi carrera hacia la gestión de proyectos y operaciones (<strong>Project &amp; Operations Management</strong>),
+          combinando mi experiencia en estructuras complejas con la adopción de nuevas metodologías de gestión.
+          Estoy especializada en la creación de flujos de trabajo eficientes, la estructura de documentación técnica (technical writing)
+          y la digitalización de procesos, preparándome activamente para la <strong>certificación oficial del PMI</strong>.
         </p>
         <div class="hl-grid reveal d4">
           <div class="hl-card">
@@ -1365,11 +1699,11 @@
           <div class="tl-dot"></div>
           <div class="tl-date">Oct 2023 — <span data-i18n="present">Presente</span></div>
           <div class="tl-co" data-i18n="e1-co">Consultora Independiente de Procesos</div>
-          <div class="tl-role">Freelance · Process Consultant <span class="tl-loc">Alicante, Spain</span></div>
+          <div class="tl-role"><span data-i18n="r-freelance">Gestión de Proyectos &amp; Digitalización</span> <span class="tl-loc">Alicante, Spain</span></div>
           <ul class="tl-bullets">
-            <li data-i18n="e1-b1"><strong>Optimización de procesos</strong> para empresas industriales y tecnológicas</li>
-            <li data-i18n="e1-b2"><strong>Technical Writing</strong> — SOPs complejos, manuales y arquitectura de información</li>
-            <li data-i18n="e1-b3">Asesoría ISO 9001 y gestión de proyectos técnicos end-to-end</li>
+            <li data-i18n="e1-b1"><strong>Formación avanzada e integración de IA:</strong> investigación y aplicación práctica de herramientas de Inteligencia Artificial para la optimización de flujos de trabajo y la automatización de procesos en la gestión de proyectos</li>
+            <li data-i18n="e1-b2"><strong>Technical Writing:</strong> diseño y estructuración de SOPs complejos, manuales técnicos, documentación de proyectos y arquitectura de la información</li>
+            <li data-i18n="e1-b3"><strong>Desarrollo de soluciones No-Code:</strong> creación de sistemas personalizados de gestión operativa (enfoque actual en el sector náutico/chárter) con plataformas modulares y bases de datos relacionales</li>
           </ul>
         </div>
 
@@ -1377,7 +1711,7 @@
           <div class="tl-dot"></div>
           <div class="tl-date">Jun 2025 — Abr 2026</div>
           <div class="tl-co">InCom Group</div>
-          <div class="tl-role">Project Manager · Consultora de Procesos <span class="tl-loc">Alicante, Spain</span></div>
+          <div class="tl-role"><span data-i18n="r-incom">Project Manager · Consultora de Procesos</span> <span class="tl-loc">Alicante, Spain</span></div>
           <ul class="tl-bullets">
             <li data-i18n="e2-b1"><strong>Ciclo de vida completo</strong> de proyectos en sostenibilidad y materiales avanzados</li>
             <li data-i18n="e2-b2">Coordinación técnica entre ingeniería, producción y colaboradores externos</li>
@@ -1389,12 +1723,12 @@
           <div class="tl-dot"></div>
           <div class="tl-date">Dic 2017 — Sep 2023</div>
           <div class="tl-co">Hanstaiger S.L.</div>
-          <div class="tl-role">Fundadora & Directora de Proyectos <span class="tl-loc">Alicante, Spain</span></div>
+          <div class="tl-role"><span data-i18n="r-hanstaiger">Fundadora &amp; Directora de Proyectos</span> <span class="tl-loc">Alicante, Spain</span></div>
           <ul class="tl-bullets">
-            <li data-i18n="e3-b1">Fundación y escalado desde cero de <strong>planta de manufactura en materiales compuestos</strong></li>
-            <li data-i18n="e3-b2">Dirección de <strong>+15 proyectos internacionales</strong> simultáneos · diseño → llave en mano</li>
-            <li data-i18n="e3-b3">Arquitectura documental completa: specs técnicas, SOPs, manuales de mantenimiento</li>
-            <li data-i18n="e3-b4">Liderazgo de equipos multidisciplinares de <strong>hasta 50 profesionales</strong></li>
+            <li data-i18n="e3-b1">Fundación y escalado desde cero de una <strong>planta de diseño y construcción de embarcaciones exclusivas de alta gama</strong></li>
+            <li data-i18n="e3-b2">Dirección y ejecución de <strong>15+ proyectos de alta complejidad técnica</strong> con alcance nacional e internacional, desde el diseño conceptual hasta la entrega llave en mano</li>
+            <li data-i18n="e3-b3">Arquitectura documental completa: especificaciones técnicas, SOPs, manuales de mantenimiento y control de calidad</li>
+            <li data-i18n="e3-b4">Liderazgo de equipos multidisciplinares e industriales de <strong>hasta 50 profesionales</strong></li>
           </ul>
         </div>
 
@@ -1407,7 +1741,7 @@
           <div class="tl-dot"></div>
           <div class="tl-date">Dic 2013 — Dic 2017</div>
           <div class="tl-co">Triple W Yacht</div>
-          <div class="tl-role">Directora de Proyectos / Fundadora <span class="tl-loc">Valencia, Spain</span></div>
+          <div class="tl-role"><span data-i18n="r-triplew">Directora de Proyectos / Fundadora</span> <span class="tl-loc">Valencia, Spain</span></div>
           <ul class="tl-bullets">
             <li data-i18n="e4-b1">Oficina técnica para <strong>proyectos náuticos internacionales</strong> llave en mano</li>
             <li data-i18n="e4-b2">Documentación de ingeniería completa: viabilidad, cálculos estructurales</li>
@@ -1419,7 +1753,7 @@
           <div class="tl-dot"></div>
           <div class="tl-date">Nov 2011 — Nov 2013</div>
           <div class="tl-co">Varadero Port Denia</div>
-          <div class="tl-role">Project Manager & Ingeniera Naval <span class="tl-loc">Denia, Spain</span></div>
+          <div class="tl-role"><span data-i18n="r-varadero">Project Manager &amp; Ingeniera Naval</span> <span class="tl-loc">Denia, Spain</span></div>
           <ul class="tl-bullets">
             <li data-i18n="e5-b1">Coordinación de producción y planificación técnica de <strong>proyectos industriales a gran escala</strong></li>
             <li data-i18n="e5-b2">Supervisión de estándares de calidad, PRL y gestión de subcontratas</li>
@@ -1430,7 +1764,7 @@
           <div class="tl-dot"></div>
           <div class="tl-date">Sep 2008 — Sep 2009</div>
           <div class="tl-co">Ghenova Ingeniería (Navantia)</div>
-          <div class="tl-role">Ingeniera Naval <span class="tl-loc">Ferrol, Spain</span></div>
+          <div class="tl-role"><span data-i18n="r-ghenova">Ingeniera Naval</span> <span class="tl-loc">Ferrol, Spain</span></div>
           <ul class="tl-bullets">
             <li data-i18n="e6-b1">Modelos 3D avanzados y planos de <strong>ingeniería de detalle</strong> para industria pesada</li>
             <li data-i18n="e6-b2">Gestión de configuración y análisis de mantenimiento técnico (AMT) — <strong>Navantia</strong></li>
@@ -1552,6 +1886,73 @@
 </section>
 
 
+<!-- ════════════════════ AI & AUTOMATION SANDBOX ════════════════════ -->
+<section class="section" id="sandbox">
+  <div class="container sandbox-inner">
+
+    <div class="sandbox-head">
+      <div class="tag reveal" data-i18n="sb-tag">🤖 AI &amp; Automation Sandbox</div>
+      <h2 class="title reveal d1" data-i18n="sb-title">Digitalizando la<br><span class="gold">Operativa Marítima</span></h2>
+      <p class="sandbox-intro reveal d2" data-i18n="sb-intro">Mi espacio para cacharrear: experimentar con Inteligencia Artificial, automatizaciones y crear soluciones por mi cuenta. No son plantillas bonitas — es ingeniería de procesos y desarrollo de producto aplicados al sector náutico.</p>
+    </div>
+
+    <!-- Featured project -->
+    <div class="sb-feature reveal d2">
+      <div class="sb-video">
+        <span class="sb-video-badge">⚓ Master-Check D36</span>
+        <video controls preload="metadata" playsinline poster="sandbox-poster.jpg">
+          <source src="sandbox-d36.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="sb-feat-body">
+        <div class="sb-feat-kicker"><span data-i18n="sb-proj-k">Proyecto · Protocolo de Mantenimiento Custom</span></div>
+        <div class="sb-feat-title" data-i18n="sb-proj-t">Master-Check D36</div>
+        <div class="sb-feat-sub" data-i18n="sb-proj-s">Una solución No-Code escalable para estandarizar y digitalizar los protocolos técnicos pre-chárter de embarcaciones menores de 24m.</div>
+
+        <div class="sb-blocks">
+          <div class="sb-block">
+            <div class="sb-block-h"><span class="dot"></span><span data-i18n="sb-prob-h">El Problema</span></div>
+            <p data-i18n="sb-prob-p">Las empresas de chárter y los armadores dependen de checklists fragmentados en papel para el mantenimiento pre-salida. Esto genera riesgos operativos no trazados, error humano y falta de datos en tiempo real sobre sistemas críticos (composites, propulsión térmica y cumplimiento legal).</p>
+          </div>
+          <div class="sb-block">
+            <div class="sb-block-h"><span class="dot"></span><span data-i18n="sb-sol-h">La Solución</span></div>
+            <p data-i18n="sb-sol-p">Diseñé y desarrollé una <strong>base de datos operativa interactiva en Notion</strong>, adaptada a las especificaciones técnicas del <strong>De Antonio Yachts D36</strong>, con un esquema listo para escalar a los modelos de chárter más comunes en Ibiza.</p>
+          </div>
+          <div class="sb-block">
+            <div class="sb-block-h"><span class="dot"></span><span data-i18n="sb-arch-h">La Arquitectura</span></div>
+            <div class="sb-arch">
+              <div class="sb-arch-item" data-i18n="sb-arch-1"><strong>Sala de Máquinas Técnica:</strong> bases de datos relacionales para Casco &amp; Estructura (composites), Propulsión (gestión térmica Mercury) y Mantenimiento de Cubierta.</div>
+              <div class="sb-arch-item" data-i18n="sb-arch-2"><strong>Operaciones &amp; Finanzas:</strong> registros integrados de horas de tripulación, control de piezas/materiales y gastos en tiempo real para la temporada 2026.</div>
+              <div class="sb-arch-item" data-i18n="sb-arch-3"><strong>Seguridad &amp; Cumplimiento:</strong> directorio interactivo que enlaza canales de emergencia locales y protocolos de la autoridad marítima directamente al móvil del patrón.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sb-tech" data-i18n="sb-tech">💡 <strong>Tech Stack &amp; Roadmap:</strong> construido con bases de datos relacionales y rollups de Notion. <em>Integración futura:</em> conexión de los registros a informes automáticos por email vía Zapier/Make y exploración de prompts de IA para mantenimiento predictivo basado en los logs operativos.</div>
+      </div>
+    </div>
+
+    <!-- Notion screenshots gallery -->
+    <div class="sb-gallery reveal d3">
+      <div class="sb-shot">
+        <img src="sandbox-1.jpg" alt="Master-Check D36 — Protocolo técnico en Notion" loading="lazy">
+        <div class="sb-shot-cap" data-i18n="sb-cap1">Protocolo técnico</div>
+      </div>
+      <div class="sb-shot">
+        <img src="sandbox-2.jpg" alt="Dashboard operativo D36" loading="lazy">
+        <div class="sb-shot-cap" data-i18n="sb-cap2">Dashboard operativo</div>
+      </div>
+      <div class="sb-shot">
+        <img src="sandbox-3.jpg" alt="Directorio de emergencia y cumplimiento" loading="lazy">
+        <div class="sb-shot-cap" data-i18n="sb-cap3">Seguridad &amp; cumplimiento</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 <!-- ════════════════════ SKILLS ════════════════════ -->
 <section class="section" id="skills">
   <div class="container">
@@ -1576,8 +1977,8 @@
             <div class="sk-bar-wrap"><div class="sk-bar" data-w="90"></div></div>
           </div>
           <div class="sk-row">
-            <span class="sk-name" data-i18n="s14">Agile · Lean Methodologies</span>
-            <div class="sk-bar-wrap"><div class="sk-bar" data-w="86"></div></div>
+            <span class="sk-name" data-i18n="s14">Digitalización de Procesos</span>
+            <div class="sk-bar-wrap"><div class="sk-bar" data-w="88"></div></div>
           </div>
           <div class="sk-row">
             <span class="sk-name" data-i18n="s15">Change Management</span>
@@ -1685,7 +2086,13 @@
 
     <!-- Certifications -->
     <div class="cert-grid">
-      <div class="cert-card reveal d1">
+      <div class="cert-card cert-pmi reveal d1">
+        <div class="cert-icon">🎯</div>
+        <div class="cert-name">PMI — PMP / CAPM Candidate</div>
+        <div class="cert-body" data-i18n="cpmi-b">Certificación oficial del Project Management Institute</div>
+        <span class="cert-tag" data-i18n="cpmi-t">En preparación · Examen 2026</span>
+      </div>
+      <div class="cert-card reveal d2">
         <div class="cert-icon">⚙️</div>
         <div class="cert-name" data-i18n="c1n">COIN Nº 3088</div>
         <div class="cert-body" data-i18n="c1b">Colegiada · Colegio Oficial de Ingenieros Navales</div>
@@ -1776,32 +2183,35 @@ const T = {
     'hero-loc':'Alicante, Spain',
     'badge':'Project Manager',
     'foot-role':'Project Manager · Consultora de Procesos &amp; Operaciones · Technical Writer',
+    'hero-headline':'Eficiencia y <span class="gold">Ejecución</span> en Proyectos',
     'hero-sub':'Más de 15 años convirtiendo proyectos complejos en resultados medibles. Engineering mindset aplicado a la gestión de proyectos, la optimización de procesos, la calidad y la operativa real.',
     'p1':'Project Manager','p2':'Consultora de Procesos &amp; Operaciones','p3':'Technical Writer','p4':'Gestión del Conocimiento','p5':'ISO 9001','p6':'Metodologías Ágiles &amp; Gestión del Cambio',
     'cta1':'Trabajemos juntos →','cta2':'Ver trayectoria','scroll':'Scroll',
     'm1-lbl':'Años de experiencia','m1-sub':'Engineering · PM · Operations',
-    'm2-lbl':'Proyectos internacionales','m2-sub':'Simultáneos · End-to-end',
+    'm2-lbl':'Proyectos de Complejidad Técnica','m2-sub':'Alcance Nacional e Internacional · End-to-end',
     'm3-lbl':'Profesionales liderados','m3-sub':'Equipos multidisciplinares',
     'about-tag':'Sobre mí','about-title':'Engineering Mindset.<br><span class="gold">Project Execution.</span>',
-    'about-bio1':'Ingeniera Naval con <strong>más de 15 años</strong> en la intersección entre ingeniería técnica y gestión de proyectos. Fundé y escalé <strong>Hanstaiger S.L.</strong> desde cero — una planta de manufactura avanzada en materiales compuestos — liderando la cartera completa de proyectos internacionales con equipos de hasta 50 profesionales.',
-    'about-bio2':'Hoy trabajo como <strong>Consultora Independiente</strong> en optimización de procesos, technical writing y calidad. Miembro del Comité Técnico <strong>ISO/WD 12215 WG18</strong> para embarcaciones multicasco. Colegiada COIN Nº 3088.',
+    'about-bio1':'Ingeniera Naval con <strong>más de 15 años</strong> de experiencia en la intersección entre la ingeniería técnica y la gestión de proyectos. Fundé y escalé <strong>Hanstaiger S.L.</strong> desde cero, convirtiéndola en una planta de diseño y construcción de embarcaciones exclusivas de alta gama, donde lideré la cartera completa de proyectos coordinando equipos multidisciplinares de <strong>hasta 50 profesionales</strong>.',
+    'about-bio2':'Actualmente, enfoco mi carrera hacia la gestión de proyectos y operaciones (<strong>Project &amp; Operations Management</strong>), combinando mi experiencia en estructuras complejas con la adopción de nuevas metodologías de gestión. Estoy especializada en la creación de flujos de trabajo eficientes, la estructura de documentación técnica (technical writing) y la digitalización de procesos, preparándome activamente para la <strong>certificación oficial del PMI</strong>.',
+    'cpmi-b':'Certificación oficial del Project Management Institute','cpmi-t':'En preparación · Examen 2026',
     'hl1-t':'Technical Writing','hl1-d':'SOPs, manuales técnicos y gobernanza documental',
     'hl2-t':'Full Lifecycle PM','hl2-d':'Del concepto a la entrega llave en mano',
     'hl3-t':'ISO Quality Expert','hl3-d':'ISO 9001, ISO 14000, ISO 12215',
     'hl4-t':'Proyectos Internacionales','hl4-d':'Equipos multiculturales · documentación bilingüe',
     'exp-tag':'Experiencia profesional','exp-title':'Trayectoria<br><span class="gold">Profesional</span>',
     'present':'Presente',
+    'r-incom':'Project Manager · Consultora de Procesos','r-hanstaiger':'Fundadora &amp; Directora de Proyectos','r-triplew':'Directora de Proyectos / Fundadora','r-varadero':'Project Manager &amp; Ingeniera Naval','r-ghenova':'Ingeniera Naval','r-freelance':'Gestión de Proyectos &amp; Digitalización',
     'e1-co':'Consultora Independiente de Procesos',
-    'e1-b1':'<strong>Optimización de procesos</strong> para empresas industriales y tecnológicas',
-    'e1-b2':'<strong>Technical Writing</strong> — SOPs complejos, manuales y arquitectura de información',
-    'e1-b3':'Asesoría ISO 9001 y gestión de proyectos técnicos end-to-end',
+    'e1-b1':'<strong>Formación avanzada e integración de IA:</strong> investigación y aplicación práctica de herramientas de Inteligencia Artificial para la optimización de flujos de trabajo y la automatización de procesos en la gestión de proyectos',
+    'e1-b2':'<strong>Technical Writing:</strong> diseño y estructuración de SOPs complejos, manuales técnicos, documentación de proyectos y arquitectura de la información',
+    'e1-b3':'<strong>Desarrollo de soluciones No-Code:</strong> creación de sistemas personalizados de gestión operativa (enfoque actual en el sector náutico/chárter) con plataformas modulares y bases de datos relacionales',
     'e2-b1':'<strong>Ciclo de vida completo</strong> de proyectos en sostenibilidad y materiales avanzados',
     'e2-b2':'Coordinación técnica entre ingeniería, producción y colaboradores externos',
     'e2-b3':'Implantación de <strong>mejora continua</strong> y documentación técnica',
-    'e3-b1':'Fundación y escalado desde cero de <strong>planta de manufactura en materiales compuestos</strong>',
-    'e3-b2':'Dirección de <strong>+15 proyectos internacionales</strong> simultáneos · diseño → llave en mano',
-    'e3-b3':'Arquitectura documental completa: specs técnicas, SOPs, manuales de mantenimiento',
-    'e3-b4':'Liderazgo de equipos multidisciplinares de <strong>hasta 50 profesionales</strong>',
+    'e3-b1':'Fundación y escalado desde cero de una <strong>planta de diseño y construcción de embarcaciones exclusivas de alta gama</strong>',
+    'e3-b2':'Dirección y ejecución de <strong>15+ proyectos de alta complejidad técnica</strong> con alcance nacional e internacional, desde el diseño conceptual hasta la entrega llave en mano',
+    'e3-b3':'Arquitectura documental completa: especificaciones técnicas, SOPs, manuales de mantenimiento y control de calidad',
+    'e3-b4':'Liderazgo de equipos multidisciplinares e industriales de <strong>hasta 50 profesionales</strong>',
     'e4-b1':'Oficina técnica para <strong>proyectos náuticos internacionales</strong> llave en mano',
     'e4-b2':'Documentación de ingeniería completa: viabilidad, cálculos estructurales',
     'e4-b3':'Gestión del cambio con <strong>stakeholders multiculturales</strong> y documentación bilingüe',
@@ -1822,10 +2232,26 @@ const T = {
     'pr5-desc':'Gestión de proyectos estratégicos en sostenibilidad y materiales avanzados. Control de calidad, stakeholders y documentación técnica en sector industrial multisectorial.',
     'pr6-role':'Technical Director & Founder',
     'pr6-desc':'Dirección técnica de oficina de ingeniería especializada en proyectos náuticos internacionales. Presupuestos, cronogramas de contratistas y ciclo de vida técnico completo.',
+    'nav-sandbox':'AI Sandbox',
+    'sb-tag':'🤖 AI &amp; Automation Sandbox',
+    'sb-title':'Digitalizando la<br><span class="gold">Operativa Marítima</span>',
+    'sb-intro':'Mi espacio para cacharrear: experimentar con Inteligencia Artificial, automatizaciones y crear soluciones por mi cuenta. No son plantillas bonitas — es ingeniería de procesos y desarrollo de producto aplicados al sector náutico.',
+    'sb-proj-k':'Proyecto · Protocolo de Mantenimiento Custom','sb-proj-t':'Master-Check D36',
+    'sb-proj-s':'Una solución No-Code escalable para estandarizar y digitalizar los protocolos técnicos pre-chárter de embarcaciones menores de 24m.',
+    'sb-prob-h':'El Problema',
+    'sb-prob-p':'Las empresas de chárter y los armadores dependen de checklists fragmentados en papel para el mantenimiento pre-salida. Esto genera riesgos operativos no trazados, error humano y falta de datos en tiempo real sobre sistemas críticos (composites, propulsión térmica y cumplimiento legal).',
+    'sb-sol-h':'La Solución',
+    'sb-sol-p':'Diseñé y desarrollé una <strong>base de datos operativa interactiva en Notion</strong>, adaptada a las especificaciones técnicas del <strong>De Antonio Yachts D36</strong>, con un esquema listo para escalar a los modelos de chárter más comunes en Ibiza.',
+    'sb-arch-h':'La Arquitectura',
+    'sb-arch-1':'<strong>Sala de Máquinas Técnica:</strong> bases de datos relacionales para Casco &amp; Estructura (composites), Propulsión (gestión térmica Mercury) y Mantenimiento de Cubierta.',
+    'sb-arch-2':'<strong>Operaciones &amp; Finanzas:</strong> registros integrados de horas de tripulación, control de piezas/materiales y gastos en tiempo real para la temporada 2026.',
+    'sb-arch-3':'<strong>Seguridad &amp; Cumplimiento:</strong> directorio interactivo que enlaza canales de emergencia locales y protocolos de la autoridad marítima directamente al móvil del patrón.',
+    'sb-tech':'💡 <strong>Tech Stack &amp; Roadmap:</strong> construido con bases de datos relacionales y rollups de Notion. <em>Integración futura:</em> conexión de los registros a informes automáticos por email vía Zapier/Make y exploración de prompts de IA para mantenimiento predictivo basado en los logs operativos.',
+    'sb-cap1':'Protocolo técnico','sb-cap2':'Dashboard operativo','sb-cap3':'Seguridad &amp; cumplimiento',
     'sk-tag':'Competencias','sk-title':'Skills &<br><span class="gold">Expertise</span>',
     'sk-c1':'Project & Operations Management','sk-c2':'Quality · Process · Documentation',
     'sk-c3':'Naval & Technical Engineering','sk-c4':'Tools & Technology',
-    's11':'Project Management','s12':'Stakeholder Communication','s13':'Budget Control','s14':'Agile · Lean Methodologies','s15':'Change Management',
+    's11':'Project Management','s12':'Stakeholder Communication','s13':'Budget Control','s14':'Digitalización de Procesos','s15':'Change Management',
     's23':'SOP Documentation','s24':'Process Optimization','s25':'Risk Assessment',
     's31':'Naval Architecture','s32':'Composite Materials','s33':'Structural Calculations','s34':'Yacht Design & Consulting',
     'cert-tag':'Formación & Certificaciones','cert-title':'Credenciales<br><span class="gold">& Formación</span>',
@@ -1846,32 +2272,35 @@ const T = {
     'hero-loc':'Alicante, Spain',
     'badge':'Project Manager',
     'foot-role':'Project Manager · Process &amp; Operations Consultant · Technical Writer',
+    'hero-headline':'Project <span class="gold">Efficiency</span> &amp; Execution',
     'hero-sub':'15+ years turning complex projects into measurable results. Engineering mindset applied to project management, process optimization, quality and real operational execution.',
     'p1':'Project Manager','p2':'Process &amp; Operations Consultant','p3':'Technical Writer','p4':'Knowledge Management','p5':'ISO 9001','p6':'Agile &amp; Change Management',
     'cta1':"Let's work together →",'cta2':'View career','scroll':'Scroll',
     'm1-lbl':'Years of experience','m1-sub':'Engineering · PM · Operations',
-    'm2-lbl':'International projects','m2-sub':'Simultaneous · End-to-end',
+    'm2-lbl':'High-Complexity Technical Projects','m2-sub':'National &amp; International Scope · End-to-end',
     'm3-lbl':'Professionals led','m3-sub':'Multidisciplinary teams',
     'about-tag':'About me','about-title':'Engineering Mindset.<br><span class="gold">Project Execution.</span>',
-    'about-bio1':'Naval Engineer with <strong>15+ years</strong> at the intersection of technical engineering and project management. I founded and scaled <strong>Hanstaiger S.L.</strong> from scratch — an advanced composite materials manufacturing plant — leading a full portfolio of international projects with teams of up to 50 professionals.',
-    'about-bio2':'Today I work as an <strong>Independent Consultant</strong> in process optimization, technical writing and quality management. Member of the <strong>ISO/WD 12215 WG18</strong> Technical Committee for multihull vessels. COIN member Nº 3088.',
+    'about-bio1':'Naval Engineer with <strong>15+ years</strong> of experience at the intersection of technical engineering and project management. I founded and scaled <strong>Hanstaiger S.L.</strong> from scratch, turning it into a design-and-build yard for exclusive high-end vessels, where I led the full project portfolio coordinating multidisciplinary teams of <strong>up to 50 professionals</strong>.',
+    'about-bio2':'Today my career focuses on <strong>Project &amp; Operations Management</strong>, combining my experience with complex structures with the adoption of new management methodologies. I specialize in building efficient workflows, structuring technical documentation (technical writing) and digitalizing processes, while actively preparing for the <strong>official PMI certification</strong>.',
+    'cpmi-b':'Official Project Management Institute certification','cpmi-t':'In progress · Exam 2026',
     'hl1-t':'Technical Writing','hl1-d':'SOPs, technical manuals & document governance',
     'hl2-t':'Full Lifecycle PM','hl2-d':'From concept to turnkey delivery',
     'hl3-t':'ISO Quality Expert','hl3-d':'ISO 9001, ISO 14000, ISO 12215',
     'hl4-t':'International Projects','hl4-d':'Multicultural teams · bilingual documentation',
     'exp-tag':'Professional experience','exp-title':'Professional<br><span class="gold">Journey</span>',
     'present':'Present',
+    'r-incom':'Project Manager / Process Consultant','r-hanstaiger':'Founder &amp; Project Director','r-triplew':'Founder &amp; Project Director','r-varadero':'Project Manager &amp; Naval Engineer','r-ghenova':'Naval Engineer','r-freelance':'Project Management &amp; Digitalization',
     'e1-co':'Independent Process Consultant',
-    'e1-b1':'<strong>Process optimization</strong> for industrial and technology companies',
-    'e1-b2':'<strong>Technical Writing</strong> — complex SOPs, technical manuals and information architecture',
-    'e1-b3':'ISO 9001 advisory and end-to-end technical project management',
+    'e1-b1':'<strong>Advanced training &amp; AI integration:</strong> research and hands-on application of Artificial Intelligence tools to optimize workflows and automate processes in project management',
+    'e1-b2':'<strong>Technical Writing:</strong> design and structuring of complex SOPs, technical manuals, project documentation and information architecture',
+    'e1-b3':'<strong>No-Code solution development:</strong> building custom operational management systems (current focus on the nautical/charter sector) using modular platforms and relational databases',
     'e2-b1':'<strong>Full project lifecycle management</strong> in sustainability and advanced materials',
     'e2-b2':'Technical coordination between engineering, production and external partners',
     'e2-b3':'Implementation of <strong>continuous improvement</strong> methodologies and technical documentation',
-    'e3-b1':'Founded and scaled from scratch an <strong>advanced composite materials manufacturing plant</strong>',
-    'e3-b2':'Management of <strong>15+ simultaneous international projects</strong> · design → turnkey delivery',
-    'e3-b3':'Full documentation architecture: technical specs, SOPs, maintenance manuals',
-    'e3-b4':'Leadership of multidisciplinary teams of <strong>up to 50 professionals</strong>',
+    'e3-b1':'Founded and scaled from scratch a <strong>design-and-build yard for exclusive high-end vessels</strong>',
+    'e3-b2':'Direction and execution of <strong>15+ high-complexity technical projects</strong> with national and international scope, from conceptual design to turnkey delivery',
+    'e3-b3':'Full documentation architecture: technical specifications, SOPs, maintenance manuals and quality control',
+    'e3-b4':'Leadership of multidisciplinary and industrial teams of <strong>up to 50 professionals</strong>',
     'e4-b1':'Technical office for <strong>international nautical turnkey projects</strong>',
     'e4-b2':'Complete engineering documentation: feasibility studies, structural calculations',
     'e4-b3':'Change management with <strong>multicultural stakeholders</strong> and bilingual documentation',
@@ -1892,10 +2321,26 @@ const T = {
     'pr5-desc':'Strategic project management in sustainability and advanced materials. Quality control, stakeholders and technical documentation in a multi-sector industrial environment.',
     'pr6-role':'Technical Director & Founder',
     'pr6-desc':'Technical management of engineering office specialized in international nautical turnkey projects. Budgets, contractor schedules and full technical project lifecycle.',
+    'nav-sandbox':'AI Sandbox',
+    'sb-tag':'🤖 AI &amp; Automation Sandbox',
+    'sb-title':'Digitalizing<br><span class="gold">Maritime Operations</span>',
+    'sb-intro':'My space to tinker: experimenting with Artificial Intelligence, automations and building solutions on my own. These aren\'t pretty templates — it\'s process engineering and product development applied to the nautical sector.',
+    'sb-proj-k':'Project · Custom Yacht Maintenance Protocol','sb-proj-t':'Master-Check D36',
+    'sb-proj-s':'A scalable No-Code solution designed to standardize and digitalize pre-charter technical protocols for yachts under 24m.',
+    'sb-prob-h':'The Problem',
+    'sb-prob-p':'Charter companies and yacht owners often rely on fragmented, paper-based checklists for pre-departure maintenance. This leads to untracked operational risks, human error, and a lack of real-time data on critical systems (composites, thermal propulsion, and legal compliance).',
+    'sb-sol-h':'The Solution',
+    'sb-sol-p':'I designed and developed a comprehensive <strong>interactive operational database in Notion</strong>, custom-tailored to the technical specifications of the <strong>De Antonio Yachts D36</strong> — with a blueprint ready to scale across the most common charter models in Ibiza.',
+    'sb-arch-h':'The Architecture',
+    'sb-arch-1':'<strong>Technical Engine Room:</strong> dedicated relational databases covering Hull &amp; Structure (composites), Propulsion (Mercury thermal management), and Deck Maintenance.',
+    'sb-arch-2':'<strong>Operations &amp; Finance:</strong> integrated logs for crew hours, parts/materials tracking, and real-time expense control for the 2026 season.',
+    'sb-arch-3':'<strong>Safety &amp; Compliance:</strong> a smart interactive directory linking emergency local channels and maritime authority protocols directly to the skipper\'s mobile phone.',
+    'sb-tech':'💡 <strong>Tech Stack &amp; Future Roadmap:</strong> built using Notion relational databases &amp; rollups. <em>Future integration:</em> connecting data logs to automated email reporting via Zapier/Make and exploring AI-driven predictive maintenance prompts based on operational logs.',
+    'sb-cap1':'Technical protocol','sb-cap2':'Operational dashboard','sb-cap3':'Safety &amp; compliance',
     'sk-tag':'Competencies','sk-title':'Skills &<br><span class="gold">Expertise</span>',
     'sk-c1':'Project & Operations Management','sk-c2':'Quality · Process · Documentation',
     'sk-c3':'Naval & Technical Engineering','sk-c4':'Tools & Technology',
-    's11':'Project Management','s12':'Stakeholder Communication','s13':'Budget Control','s14':'Agile · Lean Methodologies','s15':'Change Management',
+    's11':'Project Management','s12':'Stakeholder Communication','s13':'Budget Control','s14':'Process Digitalization','s15':'Change Management',
     's23':'SOP Documentation','s24':'Process Optimization','s25':'Risk Assessment',
     's31':'Naval Architecture','s32':'Composite Materials','s33':'Structural Calculations','s34':'Yacht Design & Consulting',
     'cert-tag':'Education & Certifications','cert-title':'Credentials<br><span class="gold">& Education</span>',
