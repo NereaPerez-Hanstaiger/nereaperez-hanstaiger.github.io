@@ -1273,9 +1273,112 @@
       text-transform: uppercase;
       color: var(--gold);
     }
+    /* ── Video-protagonist stage ── */
+    .sb-stage {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 56px;
+      align-items: center;
+      margin-bottom: 44px;
+    }
+    .sb-stage .sb-video {
+      box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(201,165,90,.25);
+    }
+    .sb-hook-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .sb-hook-kicker .live {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 0 rgba(201,165,90,.6);
+      animation: live 1.8s ease-out infinite;
+    }
+    @keyframes live { 0%{box-shadow:0 0 0 0 rgba(201,165,90,.5)} 100%{box-shadow:0 0 0 9px rgba(201,165,90,0)} }
+    .sb-hook-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.12;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .sb-hook-lead {
+      font-size: 1.12rem;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .sb-hook-lead .gold { color: var(--gold); }
+    .sb-hook-sub {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+    .sb-hook-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .sb-hook-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: .05em;
+      padding: 6px 12px;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,165,90,.2);
+      border-radius: 20px;
+      color: var(--gold);
+    }
+    .sb-hook-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .sb-hook-hint svg { width: 15px; height: 15px; color: var(--gold); }
+    /* ── Detail cards ── */
+    .sb-detail {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--rL);
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+    .sb-dcard {
+      background: rgba(12,20,34,.6);
+      padding: 26px 24px;
+      transition: background var(--t) var(--ease);
+    }
+    .sb-dcard:hover { background: var(--surface2); }
+    .sb-dcard-h {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 11.5px; font-weight: 700; letter-spacing: .05em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+    }
+    .sb-dcard-h .n {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      opacity: .55; font-weight: 500;
+    }
+    .sb-dcard p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .sb-dcard p strong { color: var(--text); font-weight: 600; }
+    .sb-dcard .sb-arch { gap: 9px; }
+    .sb-dcard .sb-arch-item { font-size: 12.5px; }
+
     @media (max-width: 860px) {
+      .sb-stage { grid-template-columns: 1fr; gap: 30px; }
+      .sb-stage .sb-video { max-width: 300px; margin: 0 auto; }
       .sb-feature { grid-template-columns: 1fr; gap: 30px; }
       .sb-video { max-width: 280px; margin: 0 auto; }
+      .sb-detail { grid-template-columns: 1fr; }
       .sb-gallery { grid-template-columns: 1fr; }
     }
 
@@ -1577,9 +1680,9 @@
       <!-- Desktop links -->
       <ul class="nav-links">
         <li><a href="#about"   data-i18n="nav-about">Sobre mí</a></li>
+        <li><a href="#sandbox"     data-i18n="nav-sandbox">AI Sandbox</a></li>
         <li><a href="#experience" data-i18n="nav-exp">Experiencia</a></li>
         <li><a href="#projects"   data-i18n="nav-proj">Proyectos</a></li>
-        <li><a href="#sandbox"     data-i18n="nav-sandbox">AI Sandbox</a></li>
         <li><a href="#skills"     data-i18n="nav-skills">Skills</a></li>
         <li><a href="#contact"    data-i18n="nav-contact">Contacto</a></li>
       </ul>
@@ -1602,9 +1705,9 @@
 <!-- Mobile drawer -->
 <div class="mobile-drawer" id="drawer">
   <a href="#about"   onclick="closeBurger()" data-i18n="nav-about">Sobre mí</a>
+  <a href="#sandbox"     onclick="closeBurger()" data-i18n="nav-sandbox">AI Sandbox</a>
   <a href="#experience" onclick="closeBurger()" data-i18n="nav-exp">Experiencia</a>
   <a href="#projects"   onclick="closeBurger()" data-i18n="nav-proj">Proyectos</a>
-  <a href="#sandbox"     onclick="closeBurger()" data-i18n="nav-sandbox">AI Sandbox</a>
   <a href="#skills"     onclick="closeBurger()" data-i18n="nav-skills">Skills</a>
   <a href="#contact"    onclick="closeBurger()" data-i18n="nav-contact">Contacto</a>
 </div>
@@ -1618,7 +1721,7 @@
     <div class="hero-content">
 
       <div class="hero-tagline reveal">
-        <div class="hero-roles" data-i18n="hero-roles"><span class="pm">Project Manager</span><span class="sep">|</span>Consultora de Procesos y Operaciones<span class="sep">|</span>Technical Writer<span class="sep">|</span>Gestión del Conocimiento e <span class="k">ISO 9001</span><span class="sep">|</span>Metodologías Ágiles &amp; Gestión del Cambio</div>
+        <div class="hero-roles" data-i18n="hero-roles"><span class="pm">Project Manager</span><span class="sep">|</span>Consultora de Procesos y Operaciones<span class="sep">|</span>Technical Writer<span class="sep">|</span>Gestión del Conocimiento e <span class="k">ISO 9001</span><span class="sep">|</span>Digitalización de Procesos &amp; Gestión del Cambio</div>
         <div class="hero-loc">
           <span class="hero-eyebrow-line"></span>
           <span data-i18n="hero-loc">Alicante, Spain</span>
@@ -1644,7 +1747,7 @@
         <span class="pill" data-i18n="p3">Technical Writer</span>
         <span class="pill" data-i18n="p4">Gestión del Conocimiento</span>
         <span class="pill" data-i18n="p5">ISO 9001</span>
-        <span class="pill" data-i18n="p6">Metodologías Ágiles &amp; Gestión del Cambio</span>
+        <span class="pill" data-i18n="p6">Digitalización de Procesos &amp; Gestión del Cambio</span>
       </div>
 
       <div class="cta-row reveal d4">
@@ -1769,6 +1872,87 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════ AI & AUTOMATION SANDBOX ════════════════════ -->
+<section class="section" id="sandbox">
+  <div class="container sandbox-inner">
+
+    <div class="sandbox-head">
+      <div class="tag reveal" data-i18n="sb-tag">🤖 AI &amp; Automation Sandbox</div>
+      <h2 class="title reveal d1" data-i18n="sb-title">Digitalizando la<br><span class="gold">Operativa Marítima</span></h2>
+      <p class="sandbox-intro reveal d2" data-i18n="sb-intro">Mi espacio para cacharrear: experimentar con Inteligencia Artificial, automatizaciones y crear soluciones por mi cuenta. No son plantillas bonitas — es ingeniería de procesos y desarrollo de producto aplicados al sector náutico.</p>
+    </div>
+
+    <!-- Video-protagonist stage -->
+    <div class="sb-stage reveal d2">
+      <div class="sb-video" id="sbVideo" data-yt="YXmUoLoQC-g" onclick="playSandbox()" role="button" tabindex="0" aria-label="Reproducir vídeo Master-Check D36">
+        <span class="sb-video-badge">⚓ Master-Check D36</span>
+        <img src="sandbox-poster-v.jpg" alt="Master-Check D36 — demo del protocolo técnico" class="sb-poster" loading="lazy">
+        <span class="sb-play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </div>
+
+      <div class="sb-hook">
+        <div class="sb-hook-kicker"><span class="live"></span><span data-i18n="sb-proj-k">Proyecto destacado · En desarrollo activo</span></div>
+        <div class="sb-hook-title" data-i18n="sb-proj-t">Master-Check D36</div>
+        <p class="sb-hook-lead" data-i18n="sb-hook-lead">No son plantillas de Notion <span class="gold">bonitas</span> — es el protocolo técnico de un astillero convertido en un producto digital y escalable.</p>
+        <p class="sb-hook-sub" data-i18n="sb-proj-s">Una solución No-Code escalable para estandarizar y digitalizar los protocolos técnicos pre-chárter de embarcaciones menores de 24m.</p>
+        <div class="sb-hook-tags">
+          <span class="sb-hook-tag">Notion</span>
+          <span class="sb-hook-tag">No-Code</span>
+          <span class="sb-hook-tag">Relational DB</span>
+          <span class="sb-hook-tag">Product Management</span>
+          <span class="sb-hook-tag">AI Roadmap</span>
+        </div>
+        <span class="sb-hook-hint">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <span data-i18n="sb-hint">Pulsa play para ver la demo en 60 segundos</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Detail cards -->
+    <div class="sb-detail reveal d3">
+      <div class="sb-dcard">
+        <div class="sb-dcard-h"><span class="n">01</span><span data-i18n="sb-prob-h">El Problema</span></div>
+        <p data-i18n="sb-prob-p">Las empresas de chárter y los armadores dependen de checklists fragmentados en papel para el mantenimiento pre-salida. Esto genera riesgos operativos no trazados, error humano y falta de datos en tiempo real sobre sistemas críticos.</p>
+      </div>
+      <div class="sb-dcard">
+        <div class="sb-dcard-h"><span class="n">02</span><span data-i18n="sb-sol-h">La Solución</span></div>
+        <p data-i18n="sb-sol-p">Diseñé y desarrollé una <strong>base de datos operativa interactiva en Notion</strong>, adaptada a las especificaciones técnicas del <strong>De Antonio Yachts D36</strong>, con un esquema listo para escalar a los modelos de chárter más comunes en Ibiza.</p>
+      </div>
+      <div class="sb-dcard">
+        <div class="sb-dcard-h"><span class="n">03</span><span data-i18n="sb-arch-h">La Arquitectura</span></div>
+        <div class="sb-arch">
+          <div class="sb-arch-item" data-i18n="sb-arch-1"><strong>Sala de Máquinas Técnica:</strong> Casco &amp; Estructura (composites), Propulsión (gestión térmica Mercury) y Cubierta.</div>
+          <div class="sb-arch-item" data-i18n="sb-arch-2"><strong>Operaciones &amp; Finanzas:</strong> horas de tripulación, control de materiales y gastos en tiempo real (temporada 2026).</div>
+          <div class="sb-arch-item" data-i18n="sb-arch-3"><strong>Seguridad &amp; Cumplimiento:</strong> directorio interactivo de emergencias y autoridad marítima al móvil del patrón.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-tech reveal d3" data-i18n="sb-tech">💡 <strong>Tech Stack &amp; Roadmap:</strong> construido con bases de datos relacionales y rollups de Notion. <em>Integración futura:</em> conexión de los registros a informes automáticos por email vía Zapier/Make y exploración de prompts de IA para mantenimiento predictivo basado en los logs operativos.</div>
+
+    <!-- Notion screenshots gallery -->
+    <div class="sb-gallery reveal d3">
+      <div class="sb-shot">
+        <img src="sandbox-1.jpg" alt="Master-Check D36 — Protocolo técnico en Notion" loading="lazy">
+        <div class="sb-shot-cap" data-i18n="sb-cap1">Protocolo técnico</div>
+      </div>
+      <div class="sb-shot">
+        <img src="sandbox-2.jpg" alt="Dashboard operativo D36" loading="lazy">
+        <div class="sb-shot-cap" data-i18n="sb-cap2">Dashboard operativo</div>
+      </div>
+      <div class="sb-shot">
+        <img src="sandbox-3.jpg" alt="Directorio de emergencia y cumplimiento" loading="lazy">
+        <div class="sb-shot-cap" data-i18n="sb-cap3">Seguridad &amp; cumplimiento</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1973,73 +2157,6 @@
   </div>
 </section>
 
-
-<!-- ════════════════════ AI & AUTOMATION SANDBOX ════════════════════ -->
-<section class="section" id="sandbox">
-  <div class="container sandbox-inner">
-
-    <div class="sandbox-head">
-      <div class="tag reveal" data-i18n="sb-tag">🤖 AI &amp; Automation Sandbox</div>
-      <h2 class="title reveal d1" data-i18n="sb-title">Digitalizando la<br><span class="gold">Operativa Marítima</span></h2>
-      <p class="sandbox-intro reveal d2" data-i18n="sb-intro">Mi espacio para cacharrear: experimentar con Inteligencia Artificial, automatizaciones y crear soluciones por mi cuenta. No son plantillas bonitas — es ingeniería de procesos y desarrollo de producto aplicados al sector náutico.</p>
-    </div>
-
-    <!-- Featured project -->
-    <div class="sb-feature reveal d2">
-      <div class="sb-video" id="sbVideo" data-yt="YXmUoLoQC-g" onclick="playSandbox()" role="button" tabindex="0" aria-label="Reproducir vídeo Master-Check D36">
-        <span class="sb-video-badge">⚓ Master-Check D36</span>
-        <img src="sandbox-poster-v.jpg" alt="Master-Check D36 — demo del protocolo técnico" class="sb-poster" loading="lazy">
-        <span class="sb-play" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        </span>
-      </div>
-
-      <div class="sb-feat-body">
-        <div class="sb-feat-kicker"><span data-i18n="sb-proj-k">Proyecto · Protocolo de Mantenimiento Custom</span></div>
-        <div class="sb-feat-title" data-i18n="sb-proj-t">Master-Check D36</div>
-        <div class="sb-feat-sub" data-i18n="sb-proj-s">Una solución No-Code escalable para estandarizar y digitalizar los protocolos técnicos pre-chárter de embarcaciones menores de 24m.</div>
-
-        <div class="sb-blocks">
-          <div class="sb-block">
-            <div class="sb-block-h"><span class="dot"></span><span data-i18n="sb-prob-h">El Problema</span></div>
-            <p data-i18n="sb-prob-p">Las empresas de chárter y los armadores dependen de checklists fragmentados en papel para el mantenimiento pre-salida. Esto genera riesgos operativos no trazados, error humano y falta de datos en tiempo real sobre sistemas críticos (composites, propulsión térmica y cumplimiento legal).</p>
-          </div>
-          <div class="sb-block">
-            <div class="sb-block-h"><span class="dot"></span><span data-i18n="sb-sol-h">La Solución</span></div>
-            <p data-i18n="sb-sol-p">Diseñé y desarrollé una <strong>base de datos operativa interactiva en Notion</strong>, adaptada a las especificaciones técnicas del <strong>De Antonio Yachts D36</strong>, con un esquema listo para escalar a los modelos de chárter más comunes en Ibiza.</p>
-          </div>
-          <div class="sb-block">
-            <div class="sb-block-h"><span class="dot"></span><span data-i18n="sb-arch-h">La Arquitectura</span></div>
-            <div class="sb-arch">
-              <div class="sb-arch-item" data-i18n="sb-arch-1"><strong>Sala de Máquinas Técnica:</strong> bases de datos relacionales para Casco &amp; Estructura (composites), Propulsión (gestión térmica Mercury) y Mantenimiento de Cubierta.</div>
-              <div class="sb-arch-item" data-i18n="sb-arch-2"><strong>Operaciones &amp; Finanzas:</strong> registros integrados de horas de tripulación, control de piezas/materiales y gastos en tiempo real para la temporada 2026.</div>
-              <div class="sb-arch-item" data-i18n="sb-arch-3"><strong>Seguridad &amp; Cumplimiento:</strong> directorio interactivo que enlaza canales de emergencia locales y protocolos de la autoridad marítima directamente al móvil del patrón.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="sb-tech" data-i18n="sb-tech">💡 <strong>Tech Stack &amp; Roadmap:</strong> construido con bases de datos relacionales y rollups de Notion. <em>Integración futura:</em> conexión de los registros a informes automáticos por email vía Zapier/Make y exploración de prompts de IA para mantenimiento predictivo basado en los logs operativos.</div>
-      </div>
-    </div>
-
-    <!-- Notion screenshots gallery -->
-    <div class="sb-gallery reveal d3">
-      <div class="sb-shot">
-        <img src="sandbox-1.jpg" alt="Master-Check D36 — Protocolo técnico en Notion" loading="lazy">
-        <div class="sb-shot-cap" data-i18n="sb-cap1">Protocolo técnico</div>
-      </div>
-      <div class="sb-shot">
-        <img src="sandbox-2.jpg" alt="Dashboard operativo D36" loading="lazy">
-        <div class="sb-shot-cap" data-i18n="sb-cap2">Dashboard operativo</div>
-      </div>
-      <div class="sb-shot">
-        <img src="sandbox-3.jpg" alt="Directorio de emergencia y cumplimiento" loading="lazy">
-        <div class="sb-shot-cap" data-i18n="sb-cap3">Seguridad &amp; cumplimiento</div>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 
 <!-- ════════════════════ SKILLS ════════════════════ -->
@@ -2268,13 +2385,13 @@ const T = {
   es:{
     'nav-about':'Sobre mí','nav-exp':'Experiencia','nav-proj':'Proyectos','nav-skills':'Skills','nav-contact':'Contacto',
     'logo-sub':'Project Manager · Consulting',
-    'hero-roles':'<span class="pm">Project Manager</span><span class="sep">|</span>Consultora de Procesos y Operaciones<span class="sep">|</span>Technical Writer<span class="sep">|</span>Gestión del Conocimiento e <span class="k">ISO 9001</span><span class="sep">|</span>Metodologías Ágiles &amp; Gestión del Cambio',
+    'hero-roles':'<span class="pm">Project Manager</span><span class="sep">|</span>Consultora de Procesos y Operaciones<span class="sep">|</span>Technical Writer<span class="sep">|</span>Gestión del Conocimiento e <span class="k">ISO 9001</span><span class="sep">|</span>Digitalización de Procesos &amp; Gestión del Cambio',
     'hero-loc':'Alicante, Spain',
     'badge':'Project Manager',
     'foot-role':'Project Manager · Consultora de Procesos &amp; Operaciones · Technical Writer',
     'hero-headline':'Eficiencia y <span class="gold">Ejecución</span> en Proyectos',
     'hero-sub':'Más de 15 años convirtiendo proyectos complejos en resultados medibles. Engineering mindset aplicado a la gestión de proyectos, la optimización de procesos, la calidad y la operativa real.',
-    'p1':'Project Manager','p2':'Consultora de Procesos &amp; Operaciones','p3':'Technical Writer','p4':'Gestión del Conocimiento','p5':'ISO 9001','p6':'Metodologías Ágiles &amp; Gestión del Cambio',
+    'p1':'Project Manager','p2':'Consultora de Procesos &amp; Operaciones','p3':'Technical Writer','p4':'Gestión del Conocimiento','p5':'ISO 9001','p6':'Digitalización de Procesos &amp; Gestión del Cambio',
     'cta1':'Trabajemos juntos →','cta2':'Ver trayectoria','scroll':'Scroll',
     'm1-lbl':'Años de experiencia','m1-sub':'Engineering · PM · Operations',
     'm2-lbl':'Proyectos de Complejidad Técnica','m2-sub':'Alcance Nacional e Internacional · End-to-end',
@@ -2325,16 +2442,18 @@ const T = {
     'sb-tag':'🤖 AI &amp; Automation Sandbox',
     'sb-title':'Digitalizando la<br><span class="gold">Operativa Marítima</span>',
     'sb-intro':'Mi espacio para cacharrear: experimentar con Inteligencia Artificial, automatizaciones y crear soluciones por mi cuenta. No son plantillas bonitas — es ingeniería de procesos y desarrollo de producto aplicados al sector náutico.',
-    'sb-proj-k':'Proyecto · Protocolo de Mantenimiento Custom','sb-proj-t':'Master-Check D36',
+    'sb-proj-k':'Proyecto destacado · En desarrollo activo','sb-proj-t':'Master-Check D36',
+    'sb-hook-lead':'No son plantillas de Notion <span class="gold">bonitas</span> — es el protocolo técnico de un astillero convertido en un producto digital y escalable.',
+    'sb-hint':'Pulsa play para ver la demo en 60 segundos',
     'sb-proj-s':'Una solución No-Code escalable para estandarizar y digitalizar los protocolos técnicos pre-chárter de embarcaciones menores de 24m.',
     'sb-prob-h':'El Problema',
-    'sb-prob-p':'Las empresas de chárter y los armadores dependen de checklists fragmentados en papel para el mantenimiento pre-salida. Esto genera riesgos operativos no trazados, error humano y falta de datos en tiempo real sobre sistemas críticos (composites, propulsión térmica y cumplimiento legal).',
+    'sb-prob-p':'Las empresas de chárter y los armadores dependen de checklists fragmentados en papel para el mantenimiento pre-salida. Esto genera riesgos operativos no trazados, error humano y falta de datos en tiempo real sobre sistemas críticos.',
     'sb-sol-h':'La Solución',
     'sb-sol-p':'Diseñé y desarrollé una <strong>base de datos operativa interactiva en Notion</strong>, adaptada a las especificaciones técnicas del <strong>De Antonio Yachts D36</strong>, con un esquema listo para escalar a los modelos de chárter más comunes en Ibiza.',
     'sb-arch-h':'La Arquitectura',
-    'sb-arch-1':'<strong>Sala de Máquinas Técnica:</strong> bases de datos relacionales para Casco &amp; Estructura (composites), Propulsión (gestión térmica Mercury) y Mantenimiento de Cubierta.',
-    'sb-arch-2':'<strong>Operaciones &amp; Finanzas:</strong> registros integrados de horas de tripulación, control de piezas/materiales y gastos en tiempo real para la temporada 2026.',
-    'sb-arch-3':'<strong>Seguridad &amp; Cumplimiento:</strong> directorio interactivo que enlaza canales de emergencia locales y protocolos de la autoridad marítima directamente al móvil del patrón.',
+    'sb-arch-1':'<strong>Sala de Máquinas Técnica:</strong> Casco &amp; Estructura (composites), Propulsión (gestión térmica Mercury) y Cubierta.',
+    'sb-arch-2':'<strong>Operaciones &amp; Finanzas:</strong> horas de tripulación, control de materiales y gastos en tiempo real (temporada 2026).',
+    'sb-arch-3':'<strong>Seguridad &amp; Cumplimiento:</strong> directorio interactivo de emergencias y autoridad marítima al móvil del patrón.',
     'sb-tech':'💡 <strong>Tech Stack &amp; Roadmap:</strong> construido con bases de datos relacionales y rollups de Notion. <em>Integración futura:</em> conexión de los registros a informes automáticos por email vía Zapier/Make y exploración de prompts de IA para mantenimiento predictivo basado en los logs operativos.',
     'sb-cap1':'Protocolo técnico','sb-cap2':'Dashboard operativo','sb-cap3':'Seguridad &amp; cumplimiento',
     'sk-tag':'Competencias','sk-title':'Skills &<br><span class="gold">Expertise</span>',
@@ -2357,13 +2476,13 @@ const T = {
   en:{
     'nav-about':'About','nav-exp':'Experience','nav-proj':'Projects','nav-skills':'Skills','nav-contact':'Contact',
     'logo-sub':'Project Manager · Consulting',
-    'hero-roles':'<span class="pm">Project Manager</span><span class="sep">|</span>Process &amp; Operations Consultant<span class="sep">|</span>Technical Writer<span class="sep">|</span>Knowledge Management &amp; <span class="k">ISO 9001</span><span class="sep">|</span>Agile Methodologies &amp; Change Management',
+    'hero-roles':'<span class="pm">Project Manager</span><span class="sep">|</span>Process &amp; Operations Consultant<span class="sep">|</span>Technical Writer<span class="sep">|</span>Knowledge Management &amp; <span class="k">ISO 9001</span><span class="sep">|</span>Process Digitalization &amp; Change Management',
     'hero-loc':'Alicante, Spain',
     'badge':'Project Manager',
     'foot-role':'Project Manager · Process &amp; Operations Consultant · Technical Writer',
     'hero-headline':'Project <span class="gold">Efficiency</span> &amp; Execution',
     'hero-sub':'15+ years turning complex projects into measurable results. Engineering mindset applied to project management, process optimization, quality and real operational execution.',
-    'p1':'Project Manager','p2':'Process &amp; Operations Consultant','p3':'Technical Writer','p4':'Knowledge Management','p5':'ISO 9001','p6':'Agile &amp; Change Management',
+    'p1':'Project Manager','p2':'Process &amp; Operations Consultant','p3':'Technical Writer','p4':'Knowledge Management','p5':'ISO 9001','p6':'Digitalization &amp; Change Management',
     'cta1':"Let's work together →",'cta2':'View career','scroll':'Scroll',
     'm1-lbl':'Years of experience','m1-sub':'Engineering · PM · Operations',
     'm2-lbl':'High-Complexity Technical Projects','m2-sub':'National &amp; International Scope · End-to-end',
@@ -2414,16 +2533,18 @@ const T = {
     'sb-tag':'🤖 AI &amp; Automation Sandbox',
     'sb-title':'Digitalizing<br><span class="gold">Maritime Operations</span>',
     'sb-intro':'My space to tinker: experimenting with Artificial Intelligence, automations and building solutions on my own. These aren\'t pretty templates — it\'s process engineering and product development applied to the nautical sector.',
-    'sb-proj-k':'Project · Custom Yacht Maintenance Protocol','sb-proj-t':'Master-Check D36',
+    'sb-proj-k':'Featured project · Actively in development','sb-proj-t':'Master-Check D36',
+    'sb-hook-lead':'These aren\'t pretty Notion <span class="gold">templates</span> — it\'s a shipyard\'s technical protocol turned into a scalable digital product.',
+    'sb-hint':'Hit play for the 60-second demo',
     'sb-proj-s':'A scalable No-Code solution designed to standardize and digitalize pre-charter technical protocols for yachts under 24m.',
     'sb-prob-h':'The Problem',
-    'sb-prob-p':'Charter companies and yacht owners often rely on fragmented, paper-based checklists for pre-departure maintenance. This leads to untracked operational risks, human error, and a lack of real-time data on critical systems (composites, thermal propulsion, and legal compliance).',
+    'sb-prob-p':'Charter companies and yacht owners often rely on fragmented, paper-based checklists for pre-departure maintenance. This leads to untracked operational risks, human error, and a lack of real-time data on critical systems.',
     'sb-sol-h':'The Solution',
     'sb-sol-p':'I designed and developed a comprehensive <strong>interactive operational database in Notion</strong>, custom-tailored to the technical specifications of the <strong>De Antonio Yachts D36</strong> — with a blueprint ready to scale across the most common charter models in Ibiza.',
     'sb-arch-h':'The Architecture',
-    'sb-arch-1':'<strong>Technical Engine Room:</strong> dedicated relational databases covering Hull &amp; Structure (composites), Propulsion (Mercury thermal management), and Deck Maintenance.',
-    'sb-arch-2':'<strong>Operations &amp; Finance:</strong> integrated logs for crew hours, parts/materials tracking, and real-time expense control for the 2026 season.',
-    'sb-arch-3':'<strong>Safety &amp; Compliance:</strong> a smart interactive directory linking emergency local channels and maritime authority protocols directly to the skipper\'s mobile phone.',
+    'sb-arch-1':'<strong>Technical Engine Room:</strong> Hull &amp; Structure (composites), Propulsion (Mercury thermal management), and Deck.',
+    'sb-arch-2':'<strong>Operations &amp; Finance:</strong> crew hours, materials tracking and real-time expense control (2026 season).',
+    'sb-arch-3':'<strong>Safety &amp; Compliance:</strong> a smart interactive directory of emergency channels and maritime authority, on the skipper\'s phone.',
     'sb-tech':'💡 <strong>Tech Stack &amp; Future Roadmap:</strong> built using Notion relational databases &amp; rollups. <em>Future integration:</em> connecting data logs to automated email reporting via Zapier/Make and exploring AI-driven predictive maintenance prompts based on operational logs.',
     'sb-cap1':'Technical protocol','sb-cap2':'Operational dashboard','sb-cap3':'Safety &amp; compliance',
     'sk-tag':'Competencies','sk-title':'Skills &<br><span class="gold">Expertise</span>',
