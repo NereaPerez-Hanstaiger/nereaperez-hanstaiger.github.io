@@ -929,6 +929,105 @@
     ───────────────────────────────────────── */
     #projects { background: var(--surface); }
 
+    /* Featured wide project card */
+    .proj-feature {
+      display: grid;
+      grid-template-columns: 46% 1fr;
+      background: var(--surface);
+      border: 1px solid var(--border-h);
+      border-radius: var(--rL);
+      overflow: hidden;
+      margin-bottom: 22px;
+      position: relative;
+    }
+    .proj-feature::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      z-index: 3;
+    }
+    .pf-media {
+      position: relative;
+      min-height: 340px;
+      overflow: hidden;
+    }
+    .pf-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(.15);
+      transition: transform .6s var(--ease), filter var(--t);
+    }
+    .proj-feature:hover .pf-media img { transform: scale(1.05); filter: grayscale(0); }
+    .pf-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 60%, var(--surface) 100%),
+                  linear-gradient(to top, rgba(6,7,15,.45), transparent 55%);
+    }
+    .pf-badge {
+      position: absolute;
+      top: 16px; left: 16px;
+      z-index: 2;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(6,7,15,.72);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(201,165,90,.28);
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+    .pf-body {
+      padding: 40px 40px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .pf-n {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .15em;
+      color: var(--gold);
+      opacity: .6;
+      margin-bottom: 14px;
+    }
+    .pf-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .pf-role {
+      font-size: 12px;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .pf-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.72;
+      margin-bottom: 22px;
+    }
+    .pf-desc strong { color: var(--text); font-weight: 600; }
+    .pf-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    @media (max-width: 760px) {
+      .proj-feature { grid-template-columns: 1fr; }
+      .pf-media { min-height: 240px; }
+      .pf-media::after { background: linear-gradient(to top, var(--surface), transparent 70%); }
+      .pf-body { padding: 28px 24px 30px; }
+    }
+
     .proj-grid {
       display: grid;
       grid-template-columns: repeat(3,1fr);
@@ -1883,7 +1982,7 @@
     <div class="sandbox-head">
       <div class="tag reveal" data-i18n="sb-tag">🤖 AI &amp; Automation Sandbox</div>
       <h2 class="title reveal d1" data-i18n="sb-title">Digitalizando la<br><span class="gold">Operativa Marítima</span></h2>
-      <p class="sandbox-intro reveal d2" data-i18n="sb-intro">Mi espacio para cacharrear: experimentar con Inteligencia Artificial, automatizaciones y crear soluciones por mi cuenta. No son plantillas bonitas — es ingeniería de procesos y desarrollo de producto aplicados al sector náutico.</p>
+      <p class="sandbox-intro reveal d2" data-i18n="sb-intro">Mi espacio para cacharrear: experimento con Inteligencia Artificial, automatizaciones y construyo soluciones reales, del concepto al producto. No son plantillas bonitas — es ingeniería de procesos y desarrollo de producto aplicados al sector náutico.</p>
     </div>
 
     <!-- Video-protagonist stage -->
@@ -2055,6 +2154,26 @@
     <div class="tag reveal" data-i18n="proj-tag">Proyectos destacados</div>
     <h2 class="title reveal d1" data-i18n="proj-title">Del concepto al<br><span class="gold">Masterpiece</span></h2>
 
+    <!-- Featured: Composites & Vacuum Infusion -->
+    <div class="proj-feature reveal d2">
+      <div class="pf-media">
+        <span class="pf-badge" data-i18n="pf-badge">⚙ Ingeniería de Composites</span>
+        <img src="infusion.jpg" alt="Infusión al vacío de composites — fabricación del trimarán Hanstaiger" loading="lazy">
+      </div>
+      <div class="pf-body">
+        <div class="pf-n">01 · Hanstaiger · Composites</div>
+        <div class="pf-title" data-i18n="pf-title">Estrategia &amp; Infusión al Vacío en Composites</div>
+        <div class="pf-role" data-i18n="pf-role">QA &amp; Estrategia de Laminación · Fibra de Carbono / Epoxi</div>
+        <p class="pf-desc" data-i18n="pf-desc">Lideré el control de calidad de los procesos de infusión al vacío para las estructuras primarias del trimarán: mamparos y superestructura en fibra de vidrio y viniléster, y zonas de alta exigencia de peso y rigidez —como el garaje interior— en fibra de carbono y resina epoxi. Coordiné a proveedores líderes del sector (Saertex, DIAB, Gazechim, Global Composites) validando consumibles y parámetros de la planta de vacío. Diseñé e implementé el <strong>Registro de Laminación</strong> del astillero, protocolo clave en la auditoría de la Capitanía Marítima que permitió obtener el <strong>Código Único de Fabricante (Letras HAN)</strong> bajo Marcado CE.</p>
+        <div class="pf-tags">
+          <span class="proj-tag">Carbon Fiber / Epoxy</span>
+          <span class="proj-tag">Vacuum Infusion</span>
+          <span class="proj-tag">QA &amp; Compliance</span>
+          <span class="proj-tag">CE Marking</span>
+        </div>
+      </div>
+    </div>
+
     <div class="proj-grid reveal d2">
 
       <div class="proj-card p1">
@@ -2094,8 +2213,8 @@
         <svg class="proj-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         <div>
           <div class="proj-n">03 · Residencial</div>
-          <div class="proj-name">Bonalba Casa Piscina</div>
-          <div class="proj-role" data-i18n="pr3-role">PM · Design Coordination · 2024</div>
+          <div class="proj-name" data-i18n="pr3-name">Reforma Integral · Bonalba</div>
+          <div class="proj-role" data-i18n="pr3-role">PM · Dirección de Reforma · Casa Piscina 2024</div>
           <p class="proj-desc" data-i18n="pr3-desc">Dirección y coordinación técnica de proyecto residencial de alta gama. Gestión integral: planificación, selección de materiales y documentación técnica completa.</p>
         </div>
         <div class="proj-tags">
@@ -2422,11 +2541,16 @@ const T = {
     'e6-b1':'Modelos 3D avanzados y planos de <strong>ingeniería de detalle</strong> para industria pesada',
     'e6-b2':'Gestión de configuración y análisis de mantenimiento técnico (AMT) — <strong>Navantia</strong>',
     'proj-tag':'Proyectos destacados','proj-title':'Del concepto al<br><span class="gold">Masterpiece</span>',
+    'pf-badge':'⚙ Ingeniería de Composites',
+    'pf-title':'Estrategia &amp; Infusión al Vacío en Composites',
+    'pf-role':'QA &amp; Estrategia de Laminación · Fibra de Carbono / Epoxi',
+    'pf-desc':'Lideré el control de calidad de los procesos de infusión al vacío para las estructuras primarias del trimarán: mamparos y superestructura en fibra de vidrio y viniléster, y zonas de alta exigencia de peso y rigidez —como el garaje interior— en fibra de carbono y resina epoxi. Coordiné a proveedores líderes del sector (Saertex, DIAB, Gazechim, Global Composites) validando consumibles y parámetros de la planta de vacío. Diseñé e implementé el <strong>Registro de Laminación</strong> del astillero, protocolo clave en la auditoría de la Capitanía Marítima que permitió obtener el <strong>Código Único de Fabricante (Letras HAN)</strong> bajo Marcado CE.',
     'pr1-role':'Fundadora & Project Director',
     'pr1-desc':'Multihull de alto rendimiento en materiales compuestos avanzados. Proyecto internacional desde el concepto y estudio de viabilidad hasta la entrega llave en mano.',
     'pr2-role':'Naval Engineering & Interior Consulting',
     'pr2-desc':'Cero emisiones, máximo rendimiento. Consultoría naval y coordinación de interiores de alta gama para catamarán de 50 pies con propulsión eléctrica.',
-    'pr3-role':'PM · Design Coordination · 2024',
+    'pr3-name':'Reforma Integral · Bonalba',
+    'pr3-role':'PM · Dirección de Reforma · Casa Piscina 2024',
     'pr3-desc':'Dirección y coordinación técnica de proyecto residencial de alta gama. Gestión integral: planificación, selección de materiales y documentación técnica completa.',
     'pr4-role':'Yacht Consulting & Material Selection',
     'pr4-desc':'Selección y coordinación de materiales premium (Spradling, Fenix, Little Greene) para interiores náuticos de lujo. Moodboards técnicos y especificaciones de acabados.',
@@ -2437,7 +2561,7 @@ const T = {
     'nav-sandbox':'AI Sandbox',
     'sb-tag':'🤖 AI &amp; Automation Sandbox',
     'sb-title':'Digitalizando la<br><span class="gold">Operativa Marítima</span>',
-    'sb-intro':'Mi espacio para cacharrear: experimentar con Inteligencia Artificial, automatizaciones y crear soluciones por mi cuenta. No son plantillas bonitas — es ingeniería de procesos y desarrollo de producto aplicados al sector náutico.',
+    'sb-intro':'Mi espacio para cacharrear: experimento con Inteligencia Artificial, automatizaciones y construyo soluciones reales, del concepto al producto. No son plantillas bonitas — es ingeniería de procesos y desarrollo de producto aplicados al sector náutico.',
     'sb-proj-k':'Proyecto destacado · En desarrollo activo','sb-proj-t':'Master-Check D36',
     'sb-hook-lead':'No son plantillas de Notion <span class="gold">bonitas</span> — es el protocolo técnico de un astillero convertido en un producto digital y escalable.',
     'sb-hint':'Pulsa play para ver la demo en 60 segundos',
@@ -2513,11 +2637,16 @@ const T = {
     'e6-b1':'Advanced 3D models and <strong>detailed engineering</strong> drawings for heavy industry',
     'e6-b2':'Configuration management and technical maintenance analysis (AMT) — <strong>Navantia</strong>',
     'proj-tag':'Featured projects','proj-title':'From concept to<br><span class="gold">Masterpiece</span>',
+    'pf-badge':'⚙ Composites Engineering',
+    'pf-title':'Composites Strategy &amp; Vacuum Infusion',
+    'pf-role':'QA &amp; Lamination Strategy · Carbon Fiber / Epoxy',
+    'pf-desc':'I led quality control of the vacuum infusion processes for the trimaran\'s primary structures: bulkheads and superstructure in fiberglass and vinylester, and high weight-and-stiffness zones —such as the interior garage— in carbon fiber and epoxy resin. I coordinated leading industry suppliers (Saertex, DIAB, Gazechim, Global Composites), validating consumables and vacuum-plant parameters. I designed and implemented the shipyard\'s <strong>Lamination Record</strong>, a QA protocol that proved decisive in the Maritime Authority audit and secured the <strong>Unique Manufacturer Code (HAN letters)</strong> under CE Marking.',
     'pr1-role':'Founder & Project Director',
     'pr1-desc':'High-performance multihull built from advanced composite materials. International project from concept and feasibility study to turnkey delivery.',
     'pr2-role':'Naval Engineering & Interior Consulting',
     'pr2-desc':'Zero emissions, maximum performance. Naval consulting and high-end interior coordination for a 50-foot electric-propulsion catamaran.',
-    'pr3-role':'PM · Design Coordination · 2024',
+    'pr3-name':'Full Renovation · Bonalba',
+    'pr3-role':'PM · Renovation Management · Pool House 2024',
     'pr3-desc':'Technical direction and coordination of a high-end residential project. Full management from planning and material selection to complete technical documentation.',
     'pr4-role':'Yacht Consulting & Material Selection',
     'pr4-desc':'Selection and coordination of premium materials (Spradling, Fenix, Little Greene) for luxury nautical interiors. Technical moodboards and finish specifications.',
@@ -2528,7 +2657,7 @@ const T = {
     'nav-sandbox':'AI Sandbox',
     'sb-tag':'🤖 AI &amp; Automation Sandbox',
     'sb-title':'Digitalizing<br><span class="gold">Maritime Operations</span>',
-    'sb-intro':'My space to tinker: experimenting with Artificial Intelligence, automations and building solutions on my own. These aren\'t pretty templates — it\'s process engineering and product development applied to the nautical sector.',
+    'sb-intro':'My space to tinker: I experiment with Artificial Intelligence and automation, and build real solutions from concept to product. These aren\'t pretty templates — it\'s process engineering and product development applied to the nautical sector.',
     'sb-proj-k':'Featured project · Actively in development','sb-proj-t':'Master-Check D36',
     'sb-hook-lead':'These aren\'t pretty Notion <span class="gold">templates</span> — it\'s a shipyard\'s technical protocol turned into a scalable digital product.',
     'sb-hint':'Hit play for the 60-second demo',
